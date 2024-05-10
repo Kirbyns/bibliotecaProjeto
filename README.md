@@ -20,3 +20,25 @@ O projeto deve conter no mínimo 10 classes Java, com um nível médio de comple
 - Relatorio: Classe responsável por gerar relatórios de empréstimos, livros disponíveis, etc.
 - Main: Classe principal para inicialização do sistema e interação com o usuário através do console.
 - Utilitarios: Classe com métodos utilitários, como validação de CPF e cálculo de datas.
+
+## Recursos de POO utilizados
+
+- Herança: Utilizada nas classes Usuario e Funcionario, que herdam de Pessoa.
+- Encapsulamento: Atributos privados em todas as classes com métodos getters e setters para acesso.
+- Polimorfismo: Método de empréstimo na classe Biblioteca que aceita tanto usuários quanto funcionários como parâmetro, permitindo polimorfismo de tipo.
+
+## Estrutura do Projeto
+
+src/
+models/: Pacote contendo as classes do modelo.
+Pessoa.java
+Usuario.java
+Funcionario.java
+Livro.java
+Exemplar.java
+Emprestimo.java
+Biblioteca.java
+Relatorio.java
+Utilitarios.java
+Main.java: Classe principal para execução do programa.
+README.md: Arquivo de instruções e explicação do projeto.
