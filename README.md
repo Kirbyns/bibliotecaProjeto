@@ -28,17 +28,20 @@ O projeto deve conter no mínimo 10 classes Java, com um nível médio de comple
 - Polimorfismo: Método de empréstimo na classe Biblioteca que aceita tanto usuários quanto funcionários como parâmetro, permitindo polimorfismo de tipo.
 
 ## Estrutura do Projeto
-
+```
 src/
-models/: Pacote contendo as classes do modelo.
-Pessoa.java
-Usuario.java
-Funcionario.java
-Livro.java
-Exemplar.java
-Emprestimo.java
-Biblioteca.java
-Relatorio.java
-Utilitarios.java
-Main.java: Classe principal para execução do programa.
-README.md: Arquivo de instruções e explicação do projeto.
+│   
+├── models/: Pacote contendo as classes do modelo.
+│   ├── Pessoa.java
+│   ├── Usuario.java
+│   ├── Funcionario.java
+│   ├── Livro.java
+│   ├── Exemplar.java
+│   ├── Emprestimo.java
+│   ├── Biblioteca.java
+│   ├── Relatorio.java
+│   └── Utilitarios.java
+│
+├── Main.java: Classe principal para execução do programa.
+└── README.md: Arquivo de instruções e explicação do projeto.
+```
