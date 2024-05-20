@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Relatorio {
+    Utilitarios utilitarios = new Utilitarios();
+
     public void gerarRelatorioEmprestimosBiblioteca(Biblioteca biblioteca) {
         System.out.println("\nTodos os empréstimos da biblioteca:");
 
@@ -59,6 +61,29 @@ public class Relatorio {
                 System.out.println("Editora: " + exemplar.getEditora());
                 System.out.println("Lançado: " + exemplar.getAnoPublicacao());
                 System.out.println("-----------------------------");
+            }
+        }
+    }
+
+    public void listarFuncionarios(Biblioteca biblioteca){
+        System.out.println("\nFuncionários:");
+        for (Funcionario funcionario : biblioteca.getFuncionarios()) {
+            System.out.println(funcionario.getNome());
+            System.out.println(funcionario.getCargo());
+            System.out.println(funcionario.getSalario());
+            System.out.println(utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
+            System.out.println("-----------------------------");
+        }
+    }
+
+    public void listarUsuarios(Biblioteca biblioteca){
+        System.out.println("\nUsuários:");
+        for (Usuario usuario : biblioteca.getUsuarios()) {
+            System.out.println(usuario.getNome());
+            System.out.println(usuario.getMatricula());
+            for(Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
+                System.out.println(emprestimo.getId() + " - " + emprestimo.getExemplar().getTitulo());
+                System.out.println(emprestimo.getDataRetirada() + " - " + emprestimo.getDataDevolucao() + " -> " + emprestimo.getStatus());
             }
         }
     }
