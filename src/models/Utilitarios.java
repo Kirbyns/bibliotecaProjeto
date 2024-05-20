@@ -2,6 +2,7 @@ package models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,11 +10,11 @@ public class Utilitarios {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    List<Long> idUsuario;
+    List<Long> idUsuario = new ArrayList<>();
 
-    List<Long> idEmprestimo;
+    List<Long> idEmprestimo = new ArrayList<>();
 
-    List<Long> idExemplar;
+    List<Long> idExemplar = new ArrayList<>();
 
 
     public Long maskaraCPF(String cpf) {
@@ -32,11 +33,16 @@ public class Utilitarios {
         Random random = new Random();
         long newNumber;
 
-        // Generate numbers until a unique one is found
-        do {
+        if (idUsuario.size() > 0) {
+            // Generate numbers until a unique one is found
+            do {
+                newNumber = random.nextLong();
+            } while (idUsuario.contains(newNumber));
+        } else {
             newNumber = random.nextLong();
-        } while (idUsuario.contains(newNumber));
+        }
 
+        idUsuario.add(newNumber);
         return newNumber;
     }
 

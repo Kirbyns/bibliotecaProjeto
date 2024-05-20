@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Usuario extends Pessoa {
     
-    private int matricula;
+    private Long matricula;
     private ArrayList<Emprestimo> historicoDeEmprestimo;
     
-    public Usuario(String nome, int idade, Long cpf, int matricula) {
+    public Usuario(String nome, int idade, Long cpf, Long matricula) {
          super(nome, idade, cpf);
          this.matricula = matricula;
          this.historicoDeEmprestimo = new ArrayList<Emprestimo>();
@@ -23,11 +23,11 @@ public class Usuario extends Pessoa {
         return historicoDeEmprestimo;
     }
 
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
