@@ -1,6 +1,6 @@
 # PROJETO FINAL
 
-Neste projeto, vocês terão a oportunidade de aplicar e demonstrar seus conhecimentos em conceitos fundamentais da POO, como herança, encapsulamento e polimorfismo. Vocês serão responsáveis por desenvolver um sistema de gestão de biblioteca, que permitirá o cadastro, empréstimo, devolução e consulta de livros, além de gerenciar informações de usuários e funcionários da biblioteca. O sistema deve ser estruturado de forma organizada e eficiente, utilizando boas práticas de programação e seguindo os padrões de POO.
+Neste projeto, vocês terão a oportunidade de aplicar e demonstrar seus conhecimentos em conceitos fundamentais da POO, como herança, encapsulamento e polimorfismo. Vocês serão responsáveis por desenvolver um sistema de gestão de models, que permitirá o cadastro, empréstimo, devolução e consulta de livros, além de gerenciar informações de usuários e funcionários da models. O sistema deve ser estruturado de forma organizada e eficiente, utilizando boas práticas de programação e seguindo os padrões de POO.
 
 ## INFORMAÇÕES
 
@@ -11,8 +11,8 @@ O projeto deve conter no mínimo 10 classes Java, com um nível médio de comple
 ### Classes
 
 - Pessoa: Representa uma pessoa genérica com atributos como nome, idade e CPF.
-- Usuario: Herda de Pessoa e contém informações específicas de um usuário da biblioteca, como número de matrícula e histórico de empréstimos.
-- Funcionario: Herda de Pessoa e possui dados como cargo, salário e data de admissão na biblioteca.
+- Usuario: Herda de Pessoa e contém informações específicas de um usuário da models, como número de matrícula e histórico de empréstimos.
+- Funcionario: Herda de Pessoa e possui dados como cargo, salário e data de admissão na models.
 - Livro: Representa um livro com atributos como título, autor, editora e ano de publicação.
 - Exemplar: Representa uma cópia específica de um livro, com um número de identificação único.
 - Emprestimo: Contém informações sobre empréstimos, como data de início, data de devolução prevista e status.
