@@ -1,15 +1,15 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Funcionario extends Pessoa {
     
     private String cargo;
     private double salario;
-    private Date dataDeAdmissao;
+    private LocalDate dataDeAdmissao;
     
     
-    public Funcionario(String cargo, double salario, Date dataDeAdmissao, String nome, int idade, int cpf) {
+    public Funcionario(String cargo, double salario, LocalDate dataDeAdmissao, String nome, int idade, Long cpf) {
         super(nome, idade, cpf);
         this.cargo = cargo;
         this.salario = salario;
@@ -32,11 +32,11 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
-    public Date getDataDeAdmissao() {
+    public LocalDate getDataDeAdmissao() {
         return dataDeAdmissao;
     }
 
-    public void setDataDeAdmissao(Date dataDeAdmissao) {
+    public void setDataDeAdmissao(LocalDate dataDeAdmissao) {
         this.dataDeAdmissao = dataDeAdmissao;
     } 
     

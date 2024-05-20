@@ -7,7 +7,7 @@ public class Usuario extends Pessoa {
     private int matricula;
     private ArrayList<Emprestimo> historicoDeEmprestimo;
     
-    public Usuario(String nome, int idade, int cpf, int matricula) {
+    public Usuario(String nome, int idade, Long cpf, int matricula) {
          super(nome, idade, cpf);
          this.matricula = matricula;
          this.historicoDeEmprestimo = new ArrayList<Emprestimo>();

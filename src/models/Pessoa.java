@@ -4,9 +4,9 @@ public class Pessoa {
     
     private String nome;
     private int idade;
-    private int cpf;
+    private Long cpf;
 
-    public Pessoa(String nome, int idade, int cpf) {
+    public Pessoa(String nome, int idade, Long cpf) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
@@ -28,11 +28,11 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public int getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
     

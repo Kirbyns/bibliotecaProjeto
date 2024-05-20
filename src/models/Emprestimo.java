@@ -3,30 +3,26 @@ package models;
 import java.time.LocalDate;
 
 public class Emprestimo {
-    private int id;
+    private final int id;
     private LocalDate dataRetirada;
     private LocalDate dataDevolucao;
     private String status;
-    private int idExemplar;
-    private int idUsuario;
+    private Exemplar exemplar;
+    private Usuario usuario;
 
     // Construtor
-    public Emprestimo(int id, LocalDate dataRetirada, LocalDate dataDevolucao, String status, int idExemplar, int idUsuario) {
+    public Emprestimo(int id, LocalDate dataRetirada, LocalDate dataDevolucao, String status, Exemplar exemplar, Usuario usuario) {
         this.id = id;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
         this.status = status;
-        this.idExemplar = idExemplar;
-        this.idUsuario = idUsuario;
+        this.exemplar = exemplar;
+        this.usuario = usuario;
     }
 
     // Getters e Setters
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public LocalDate getDataRetirada() {
@@ -53,20 +49,20 @@ public class Emprestimo {
         this.status = status;
     }
 
-    public int getIdExemplar() {
-        return idExemplar;
+    public Exemplar getExemplar() {
+        return exemplar;
     }
 
-    public void setIdExemplar(int idExemplar) {
-        this.idExemplar = idExemplar;
+    public void setExemplar(Exemplar exemplar) {
+        this.exemplar = exemplar;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
 

@@ -1,15 +1,16 @@
 package models;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 public class Livro {
     private String autor;
     private String titulo;
     private String editora;
-    private Date anoPublicacao;
+    private LocalDate anoPublicacao;
     
      // Construtor
-    public Livro(String autor, String titulo, String editora, Date anoPublicacao) {
+    public Livro(String autor, String titulo, String editora, LocalDate anoPublicacao) {
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
@@ -29,7 +30,7 @@ public class Livro {
         return editora;
     }
     
-    public Date getAnoPublicacao() {
+    public LocalDate getAnoPublicacao() {
         return anoPublicacao;
     }
     
@@ -46,7 +47,7 @@ public class Livro {
         this.editora = editora;
     }
     
-    public void setAnoPublicacao(Date anoPublicacao) {
+    public void setAnoPublicacao(LocalDate anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 }
