@@ -15,4 +15,8 @@ public class Utilitarios {
     public String maskaraDate(LocalDate lt) {
         return lt.format(formatter);
     }
+
+    public LocalDate addDataDevolucao(LocalDate lt) {
+        return lt.plusDays(30);
+    }
 }
