@@ -1,2 +1,4 @@
-package biblioteca;public class Utilitarios {
+package biblioteca;
+
+public class Utilitarios {
 }

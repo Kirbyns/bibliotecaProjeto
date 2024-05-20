@@ -1,16 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+package biblioteca;
 
-package com.mycompany.biblioteca.models;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author moasa
- */
 public class Biblioteca {
+    private List<Exemplar> exemplares;
+    private List<Emprestimo> emprestimos;
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public Biblioteca() {
+        this.exemplares = new ArrayList<>();
+        this.emprestimos = new ArrayList<>();
+    }
+
+    public void adicionarExemplar(Exemplar exemplar) {
+        exemplares.add(exemplar);
+    }
+
+    public void emprestarExemplar(Usuario usuario, Exemplar exemplar) {
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setExemplar(exemplar);
+        emprestimo.setDataInicio(new Date());
+        emprestimo.setStatus("Emprestado");
+        emprestimos.add(emprestimo);
+
+        usuario.getHistoricoEmprestimos().add(emprestimo);
+    }
+
+    public List<Exemplar> getExemplares() {
+        return exemplares;
+    }
+
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
     }
 }

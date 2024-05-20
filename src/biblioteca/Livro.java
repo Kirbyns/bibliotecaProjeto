@@ -1,21 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.biblioteca.models;
+package biblioteca;
 
-/**
- *
- * @author thfrod
- */
+import java.util.Date;
+
 public class Livro {
     private String autor;
     private String titulo;
     private String editora;
-    private String anoPublicacao;
+    private Date anoPublicacao;
     
      // Construtor
-    public Livro(String autor, String titulo, String editora, String anoPublicacao) {
+    public Livro(String autor, String titulo, String editora, Date anoPublicacao) {
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
@@ -35,7 +29,7 @@ public class Livro {
         return editora;
     }
     
-    public String getAnoPublicacao() {
+    public Date getAnoPublicacao() {
         return anoPublicacao;
     }
     
@@ -52,7 +46,7 @@ public class Livro {
         this.editora = editora;
     }
     
-    public void setAnoPublicacao(String anoPublicacao) {
+    public void setAnoPublicacao(Date anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 }

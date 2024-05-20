@@ -1,27 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.biblioteca.models;
+package biblioteca;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author moasa
- */
 public class Usuario extends Pessoa {
     
     private int matricula;
     private ArrayList<Emprestimo> historicoDeEmprestimo;
     
     public Usuario(String nome, int idade, int cpf, int matricula) {
-        super(nome, idade, cpf);
+         super(nome, idade, cpf);
          this.matricula = matricula;
-         this.historicoDeEmprestimo = new ArrayList<>(); 
+         this.historicoDeEmprestimo = new ArrayList<Emprestimo>();
     }
+
     //metodo de adicionar emprestimo ao historico do usuario
-    public void adicionarEmprestimo(Emprestimo emprestimo){ //criei a class Emprestimo apenas para parar de dar erro no codigo.  mas o primeiro "Emprestimo" faz menção a Class para puxar ela.
+    public void adicionarEmprestimo(Emprestimo emprestimo){
         historicoDeEmprestimo.add(emprestimo); 
     }
     
@@ -37,8 +30,5 @@ public class Usuario extends Pessoa {
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
-    
-    
-    
-    
+
 }
