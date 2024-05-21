@@ -10,9 +10,12 @@ public class Funcionario extends Pessoa {
     private LocalDate dataDeAdmissao;
     private String email;
     private String senha;
+    // 0 = Admin | 1 = Funcionário com acesso ao sistema | 2 = Funcionário sem
+    // acesso ao sistema
+    private int role;
 
     public Funcionario(String cargo, double salario, LocalDate dataDeAdmissao, String nome, int idade, Long cpf,
-            String email, String senha, int idFuncionario) {
+            String email, String senha, int idFuncionario, int role) {
         super(nome, idade, cpf);
         this.cargo = cargo;
         this.salario = salario;
@@ -20,10 +23,19 @@ public class Funcionario extends Pessoa {
         this.email = email;
         this.senha = senha;
         this.idFuncionario = idFuncionario;
+        this.role = role;
     }
 
     public int getIdFuncionario() {
         return idFuncionario;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getCargo() {
