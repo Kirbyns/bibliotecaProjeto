@@ -21,7 +21,7 @@ public abstract class Action {
 
     }
 
-    public static void editing_func(Funcionario funcionario, Scanner sc) {
+    public void editing_func(Funcionario funcionario, Scanner sc) {
         Utilitarios utilitarios = new Utilitarios();
 
         boolean editing_func = true;
@@ -88,6 +88,12 @@ public abstract class Action {
                                     + utilitarios.showCPFString(funcionario.getCpf()));
                     System.out.println("Novo CPF:");
                     String cpf_func = sc.next();
+
+                    if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
+                        System.out.println("CPF já cadastrado ou inválido!");
+                        break;
+                    }
+
                     if (utilitarios.maskaraCPF(cpf_func) == null) {
                         System.out.println("CPF inválido!");
                         break;
@@ -120,7 +126,7 @@ public abstract class Action {
         }
     }
 
-    public static void editing_funcByFunc(Funcionario funcionario, Scanner sc) {
+    public void editing_funcByFunc(Funcionario funcionario, Scanner sc) {
         Utilitarios utilitarios = new Utilitarios();
 
         boolean editing_func = true;
@@ -167,6 +173,12 @@ public abstract class Action {
                                     + utilitarios.showCPFString(funcionario.getCpf()));
                     System.out.println("Novo CPF:");
                     String cpf_func = sc.next();
+
+                    if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
+                        System.out.println("CPF já cadastrado ou inválido!");
+                        break;
+                    }
+
                     if (utilitarios.maskaraCPF(cpf_func) == null) {
                         System.out.println("CPF inválido!");
                         break;
@@ -199,7 +211,7 @@ public abstract class Action {
         }
     }
 
-    public static void editing_user(Usuario usuario, Scanner sc, Biblioteca biblioteca, Relatorio relatorio) {
+    public void editing_user(Usuario usuario, Scanner sc, Biblioteca biblioteca, Relatorio relatorio) {
         Utilitarios utilitarios = new Utilitarios();
 
         boolean editing_user = true;
@@ -215,7 +227,7 @@ public abstract class Action {
             System.out.println("\n-----------------------------");
 
             System.out
-                    .println("O que deseja editar no(a) usuario(a) " + usuario.getNome() + "?");
+                    .println("\nO que deseja editar no(a) usuario(a) " + usuario.getNome() + "?");
             System.out.println("0 - Sair");
             System.out.println("1 - Nome");
             System.out.println("2 - CPF");
@@ -247,12 +259,18 @@ public abstract class Action {
                                 .println("\nCPF atual -> "
                                         + utilitarios.showCPFString(usuario.getCpf()));
                         System.out.println("Novo CPF:");
-                        String cpf_func = sc.next();
-                        if (utilitarios.maskaraCPF(cpf_func) == null) {
+                        String cpf_user = sc.next();
+
+                        if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
+                            System.out.println("CPF já cadastrado ou inválido!");
+                            break;
+                        }
+
+                        if (utilitarios.maskaraCPF(cpf_user) == null) {
                             System.out.println("CPF inválido!");
                             break;
                         }
-                        usuario.setCpf(utilitarios.maskaraCPF(cpf_func));
+                        usuario.setCpf(utilitarios.maskaraCPF(cpf_user));
                         System.out.println("\nFuncionário(a) editado com sucesso!");
                         System.out.println(
                                 "Novo CPF: " + utilitarios.showCPFString(usuario.getCpf()) + "\n");

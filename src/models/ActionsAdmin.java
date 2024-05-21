@@ -128,6 +128,11 @@ public class ActionsAdmin extends Action {
                         System.out.println("CPF:");
                         String cpf_user = sc.next();
 
+                        if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
+                            System.out.println("CPF já cadastrado ou inválido!");
+                            break;
+                        }
+
                         Usuario new_usuario = new Usuario(nome_user, idade_user, utilitarios.maskaraCPF(cpf_user),
                                 utilitarios.generateIdUsuario());
 
@@ -156,6 +161,12 @@ public class ActionsAdmin extends Action {
                         LocalDate dataAdmissao = LocalDate.now();
                         System.out.println("CPF:");
                         String cpf_func = sc.next();
+
+                        if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
+                            System.out.println("CPF já cadastrado ou inválido!");
+                            break;
+                        }
+
                         System.out.println("Email:");
                         String email_func = sc.next();
                         System.out.println("Senha:");

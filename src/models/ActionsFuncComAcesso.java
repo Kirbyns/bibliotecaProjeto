@@ -129,6 +129,11 @@ public class ActionsFuncComAcesso extends Action {
                         System.out.println("CPF:");
                         String cpf_user = sc.next();
 
+                        if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
+                            System.out.println("CPF já cadastrado ou inválido!");
+                            break;
+                        }
+
                         Usuario new_usuario = new Usuario(nome_user, idade_user, utilitarios.maskaraCPF(cpf_user),
                                 utilitarios.generateIdUsuario());
 

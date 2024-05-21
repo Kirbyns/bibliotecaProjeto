@@ -49,6 +49,31 @@ public class Utilitarios {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
     }
 
+    public boolean verficarCPF(Long cpf, Biblioteca biblioteca) {
+
+        String cpf_string = Long.toString(cpf);
+        if (cpf_string.length() == 11) {
+
+            for (Funcionario funcionario : biblioteca.getFuncionarios()) {
+                if (funcionario.getCpf().equals(cpf)) {
+                    System.out.println("1");
+                    return false;
+                }
+            }
+
+            for (Usuario usuario : biblioteca.getUsuarios()) {
+                if (usuario.getCpf().equals(cpf)) {
+                    System.out.println("2");
+                    return false;
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String showCPFString(Long cpf) {
 
         String cpf_string = Long.toString(cpf);
