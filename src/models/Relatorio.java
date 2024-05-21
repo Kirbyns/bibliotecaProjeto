@@ -33,7 +33,13 @@ public class Relatorio {
     }
 
     public void gerarRelatorioEmprestimosUsuario(Usuario usuario) {
-        System.out.println("\nTodos os empréstimos do" + usuario.getNome() + ":");
+
+        if (usuario.getHistoricoDeEmprestimo().isEmpty()) {
+            System.out.println("\nNenhum empréstimo foi realizado pelo " + usuario.getNome() + ".");
+            return;
+        }
+
+        System.out.println("---------Histórico de Empréstimos-----------");
 
         for (Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
             System.out.println("Emprestimo " + emprestimo.getId() + ":");
@@ -53,6 +59,12 @@ public class Relatorio {
     }
 
     public void gerarRelatorioTodosOsLivros(ArrayList<Exemplar> exemplares) {
+
+        if (exemplares.isEmpty()) {
+            System.out.println("Nenhum Livro Cadastrado");
+            return;
+        }
+
         System.out.println("\nTodos os exemplares:");
         for (Exemplar exemplar : exemplares) {
             System.out.println("Exemplar - ID: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
@@ -70,10 +82,15 @@ public class Relatorio {
             livrosEmprestadosIds.add(emprestimo.getExemplar().getId());
         }
 
+        if (livrosEmprestadosIds.isEmpty()) {
+            System.out.println("Nenhum Livro disponível para Empréstimo");
+            return;
+        }
+
         System.out.println("\nTodos os livros disponíveis:");
         for (Exemplar exemplar : exemplares) {
             if (!livrosEmprestadosIds.contains(exemplar.getId())) {
-                System.out.println("Exemplar - ID: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
+                System.out.println("ID - Exemplar: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
                 System.out.println("Autor: \n" + exemplar.getAutor());
                 System.out.println("Editora: \n" + exemplar.getEditora());
                 System.out.println("Lançado: " + utilitarios.maskaraDate(exemplar.getAnoPublicacao()));
@@ -83,9 +100,14 @@ public class Relatorio {
     }
 
     public void listarFuncionarios(Biblioteca biblioteca) {
+        if (biblioteca.getFuncionarios().isEmpty()) {
+            System.out.println("Nenhum Funcionário Cadastrado");
+            return;
+        }
+
         System.out.println("\nFuncionários:");
         for (Funcionario funcionario : biblioteca.getFuncionarios()) {
-            System.out.println(funcionario.getNome());
+            System.out.println("\n" + funcionario.getNome());
             System.out.println(funcionario.getCargo());
             System.out.println(funcionario.getSalario());
             System.out.println(utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
@@ -94,22 +116,32 @@ public class Relatorio {
     }
 
     public void listarUsuarios(Biblioteca biblioteca) {
+        if (biblioteca.getUsuarios().isEmpty()) {
+            System.out.println("Nenhum Usuário Cadastrado");
+            return;
+        }
+
         System.out.println("\nUsuários:");
         for (Usuario usuario : biblioteca.getUsuarios()) {
-            System.out.println(usuario.getMatricula() + " - " + usuario.getNome());
-            System.out.println("---------Histórico de Empréstimos-----------");
-            for (Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
-                System.out.println(emprestimo.getId() + " - " + emprestimo.getExemplar().getTitulo());
-                System.out.println(utilitarios.maskaraDate(emprestimo.getDataRetirada()) + " - "
-                        + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()) + " -> "
-                        + emprestimo.getStatus());
-                if (emprestimo.getDataDevolucao() != null) {
-                    System.out.println(
-                            emprestimo.getStatus() + " - " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+            System.out.println("\n" + usuario.getMatricula() + " - " + usuario.getNome());
 
-                }
-                System.out.println("-----------------------------");
-            }
+            this.gerarRelatorioEmprestimosUsuario(usuario);
+            // System.out.println("---------Histórico de Empréstimos-----------");
+            // for (Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
+            // System.out.println(emprestimo.getId() + " - " +
+            // emprestimo.getExemplar().getTitulo());
+            // System.out.println(utilitarios.maskaraDate(emprestimo.getDataRetirada()) + "
+            // - "
+            // + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()) + " -> "
+            // + emprestimo.getStatus());
+            // if (emprestimo.getDataDevolucao() != null) {
+            // System.out.println(
+            // emprestimo.getStatus() + " - " +
+            // utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+
+            // }
+            // System.out.println("-----------------------------");
+            // }
         }
     }
 }
