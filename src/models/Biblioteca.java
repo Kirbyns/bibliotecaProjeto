@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Biblioteca {
@@ -40,6 +41,7 @@ public class Biblioteca {
     public void devolverExemplar(Emprestimo emprestimo) {
         this.emprestimos.remove(this.emprestimos.indexOf(emprestimo));
 
+        emprestimo.setDataDevolucao(LocalDate.now());
         emprestimo.setStatus("Devolvido");
         System.out.println("\n" + emprestimo.getExemplar().getTitulo() + " foi devolvido com sucesso!");
     }
