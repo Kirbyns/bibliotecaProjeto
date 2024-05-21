@@ -30,6 +30,7 @@ public abstract class Action {
             System.out.println("\n-----------------------------");
             System.out.println("\nId -> " + funcionario.getIdFuncionario());
             System.out.println("\nNome atual -> \n" + funcionario.getNome());
+            System.out.println("\nIdade atual -> \n" + funcionario.getIdade());
             System.out.println("\nCPF atual -> ");
             System.out.println("\n" + utilitarios.showCPFString(funcionario.getCpf()));
             System.out.println("\nCargo atual -> " + funcionario.getCargo());
@@ -45,11 +46,12 @@ public abstract class Action {
                     .println("O que deseja editar no(a) funcionário(a) " + funcionario.getNome() + "?");
             System.out.println("0 - Sair");
             System.out.println("1 - Nome");
-            System.out.println("2 - Cargo");
-            System.out.println("3 - Salário");
-            System.out.println("4 - CPF");
-            System.out.println("5 - Email");
-            System.out.println("6 - Senha");
+            System.out.println("2 - Idade");
+            System.out.println("3 - Cargo");
+            System.out.println("4 - Salário");
+            System.out.println("5 - CPF");
+            System.out.println("6 - Email");
+            System.out.println("7 - Senha");
             int opcao_func = sc.nextInt();
 
             switch (opcao_func) {
@@ -66,6 +68,15 @@ public abstract class Action {
                     System.out.println("Novo nome: " + funcionario.getNome() + "\n");
                     break;
                 case 2:
+                    System.out.println("\nIdade atual -> " + funcionario.getIdade());
+                    System.out.println("Nova idade:");
+                    sc.nextLine();
+                    int idade_func = sc.nextInt();
+                    funcionario.setIdade(idade_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
+                    break;
+                case 3:
                     System.out.println("\nCargo atual -> " + funcionario.getCargo());
                     System.out.println("Novo Cargo:");
                     sc.nextLine();
@@ -74,7 +85,7 @@ public abstract class Action {
                     System.out.println("\nFuncionário(a) editado com sucesso!");
                     System.out.println("Novo cargo: " + funcionario.getCargo() + "\n");
                     break;
-                case 3:
+                case 4:
                     System.out.println("\nSalário atual -> " + funcionario.getSalario());
                     System.out.println("Novo Salário:");
                     double salario_func = sc.nextDouble();
@@ -82,14 +93,14 @@ public abstract class Action {
                     System.out.println("\nFuncionário(a) editado com sucesso!");
                     System.out.println("Novo salário: " + funcionario.getSalario() + "\n");
                     break;
-                case 4:
+                case 5:
                     System.out
                             .println("\nCPF atual -> "
                                     + utilitarios.showCPFString(funcionario.getCpf()));
                     System.out.println("Novo CPF:");
                     String cpf_func = sc.next();
 
-                    if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
+                    if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
                         System.out.println("CPF já cadastrado ou inválido!");
                         break;
                     }
@@ -103,7 +114,7 @@ public abstract class Action {
                     System.out.println(
                             "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
                     break;
-                case 5:
+                case 6:
                     System.out.println("\nEmail atual -> " + funcionario.getEmail());
                     System.out.println("Novo Email:");
                     String email_func = sc.next();
@@ -111,7 +122,7 @@ public abstract class Action {
                     System.out.println("\nFuncionário(a) editado com sucesso!");
                     System.out.println("Novo email: " + funcionario.getEmail() + "\n");
                     break;
-                case 6:
+                case 7:
                     System.out.println("\nSenha atual -> " + funcionario.getSenha());
                     System.out.println("Nova Senha:");
                     String senha_func = sc.next();
@@ -135,6 +146,7 @@ public abstract class Action {
             System.out.println("\n-----------------------------");
             System.out.println("\nId -> " + funcionario.getIdFuncionario());
             System.out.println("\nNome atual -> \n" + funcionario.getNome());
+            System.out.println("\nIdade atual -> \n" + funcionario.getIdade());
             System.out.println("\nCPF atual -> ");
             System.out.println("\n" + utilitarios.showCPFString(funcionario.getCpf()));
             System.out.println("\nCargo atual -> " + funcionario.getCargo());
@@ -150,9 +162,10 @@ public abstract class Action {
                     .println("O que deseja editar no(a) funcionário(a) " + funcionario.getNome() + "?");
             System.out.println("0 - Sair");
             System.out.println("1 - Nome");
-            System.out.println("2 - CPF");
-            System.out.println("3 - Email");
-            System.out.println("4 - Senha");
+            System.out.println("2 - Idade");
+            System.out.println("3 - CPF");
+            System.out.println("4 - Email");
+            System.out.println("5 - Senha");
             int opcao_func = sc.nextInt();
             switch (opcao_func) {
                 case 0:
@@ -168,13 +181,22 @@ public abstract class Action {
                     System.out.println("Novo nome: " + funcionario.getNome() + "\n");
                     break;
                 case 2:
+                    System.out.println("\nIdade atual -> " + funcionario.getIdade());
+                    System.out.println("Nova idade:");
+                    sc.nextLine();
+                    int idade_func = sc.nextInt();
+                    funcionario.setIdade(idade_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
+                    break;
+                case 3:
                     System.out
                             .println("\nCPF atual -> "
                                     + utilitarios.showCPFString(funcionario.getCpf()));
                     System.out.println("Novo CPF:");
                     String cpf_func = sc.next();
 
-                    if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
+                    if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
                         System.out.println("CPF já cadastrado ou inválido!");
                         break;
                     }
@@ -188,7 +210,7 @@ public abstract class Action {
                     System.out.println(
                             "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
                     break;
-                case 3:
+                case 4:
                     System.out.println("\nEmail atual -> " + funcionario.getEmail());
                     System.out.println("Novo Email:");
                     String email_func = sc.next();
@@ -196,7 +218,7 @@ public abstract class Action {
                     System.out.println("\nFuncionário(a) editado com sucesso!");
                     System.out.println("Novo email: " + funcionario.getEmail() + "\n");
                     break;
-                case 4:
+                case 5:
                     System.out.println("\nSenha atual -> " + funcionario.getSenha());
                     System.out.println("Nova Senha:");
                     String senha_func = sc.next();
@@ -261,7 +283,7 @@ public abstract class Action {
                         System.out.println("Novo CPF:");
                         String cpf_user = sc.next();
 
-                        if (utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
+                        if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
                             System.out.println("CPF já cadastrado ou inválido!");
                             break;
                         }
