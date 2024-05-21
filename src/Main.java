@@ -389,7 +389,8 @@ public class Main {
                             break;
                         }
 
-                        Emprestimo new_emprestimo = new Emprestimo(utilitarios.generateIdEmprestimo(), data_emprestimo,
+                        Emprestimo new_emprestimo = new Emprestimo(utilitarios.generateIdEmprestimo(),
+                                data_emprestimo,
                                 status_emprestimo, exemplar_emprestando,
                                 user_emprestando);
 
@@ -425,7 +426,6 @@ public class Main {
                         System.out.println("Erro: " + e);
                         break;
                     }
-
                 case 4:
                     try {
                         System.out.println("\nInsira os dados do novo funcionário:");
@@ -457,7 +457,8 @@ public class Main {
 
                         biblioteca.adicionarFuncionarios(new_funcionario);
                         System.out
-                                .println("\nFuncionário(a) " + new_funcionario.getNome() + " adicionado com sucesso!");
+                                .println("\nFuncionário(a) " + new_funcionario.getNome()
+                                        + " adicionado com sucesso!");
                         break;
                     } catch (Exception e) {
                         System.out.println("Erro ao adicionar o funcionário!");
@@ -749,6 +750,45 @@ public class Main {
         }
     }
 
+    public static void actionsFuncSemAcesso(Funcionario funcionario, Scanner sc, Biblioteca biblioteca,
+            Relatorio relatorio, Utilitarios utilitarios) {
+        boolean run = true;
+        while (run) {
+            int response;
+
+            System.out.println("\nO que deseja?");
+            System.out.println("0. Encerrar");
+            System.out.println("1. Tela do Funcionário");
+
+            response = sc.nextInt();
+
+            // Verificando a resposta
+            switch (response) {
+                case 0:
+                    run = false;
+                    break;
+                case 1:
+                    try {
+
+                        if (funcionario == null) {
+                            System.out.println("Funcionário inexistente");
+                            break;
+                        }
+
+                        editing_funcByFunc(funcionario, sc);
+
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Erro ao editar o funcionário!");
+                        System.out.println("Erro: " + e);
+                    }
+                default:
+                    System.out.println("\nResposta inválida!");
+                    break;
+            }
+        }
+    }
+
     // Main
     public static void main(String[] args) {
         // Instanciando Utilitários, Relatorio e Biblioteca
@@ -842,6 +882,11 @@ public class Main {
                         Funcionario funcionario = utilitarios.findFuncionarioByLogin(email, senha,
                                 biblioteca.getFuncionarios());
                         actionsFuncComAcesso(funcionario, sc, biblioteca, relatorio, utilitarios);
+                        break;
+                    case 2:
+                        Funcionario funcionarioSemAcesso = utilitarios.findFuncionarioByLogin(email, senha,
+                                biblioteca.getFuncionarios());
+                        actionsFuncSemAcesso(funcionarioSemAcesso, sc, biblioteca, relatorio, utilitarios);
                         break;
                     default:
                         System.out.println("\nVocê não tem acesso a este sistema!");

@@ -8,7 +8,7 @@ public class Relatorio {
     public void gerarRelatorioEmprestimosBiblioteca(Biblioteca biblioteca) {
 
         if (biblioteca.getEmprestimos().isEmpty()) {
-            System.out.println("\nNenhum empréstimo foi realizado na biblioteca.");
+            System.out.println("\nNenhum empréstimo vigente na biblioteca.");
             return;
         }
         System.out.println("\nTodos os empréstimos da biblioteca:");
@@ -67,7 +67,7 @@ public class Relatorio {
 
         System.out.println("\nTodos os exemplares:");
         for (Exemplar exemplar : exemplares) {
-            System.out.println("Exemplar - ID: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
+            System.out.println("ID - Exemplar: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
             System.out.println("Autor: " + exemplar.getAutor());
             System.out.println("Editora: " + exemplar.getEditora());
             System.out.println("Lançado: " + utilitarios.maskaraDate(exemplar.getAnoPublicacao()));
@@ -83,14 +83,14 @@ public class Relatorio {
         }
 
         if (livrosEmprestadosIds.isEmpty()) {
-            System.out.println("Nenhum Livro disponível para Empréstimo");
+            gerarRelatorioTodosOsLivros(exemplares);
             return;
         }
 
         System.out.println("\nTodos os livros disponíveis:");
         for (Exemplar exemplar : exemplares) {
             if (!livrosEmprestadosIds.contains(exemplar.getId())) {
-                System.out.println("ID - Exemplar: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
+                System.out.println("\nID - Exemplar: \n" + exemplar.getId() + " - " + exemplar.getTitulo());
                 System.out.println("Autor: \n" + exemplar.getAutor());
                 System.out.println("Editora: \n" + exemplar.getEditora());
                 System.out.println("Lançado: " + utilitarios.maskaraDate(exemplar.getAnoPublicacao()));
