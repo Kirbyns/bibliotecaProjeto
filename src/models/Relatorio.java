@@ -127,22 +127,6 @@ public class Relatorio {
             System.out.println("\n" + usuario.getMatricula() + " - " + usuario.getNome());
 
             this.gerarRelatorioEmprestimosUsuario(usuario);
-            // System.out.println("---------Histórico de Empréstimos-----------");
-            // for (Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
-            // System.out.println(emprestimo.getId() + " - " +
-            // emprestimo.getExemplar().getTitulo());
-            // System.out.println(utilitarios.maskaraDate(emprestimo.getDataRetirada()) + "
-            // - "
-            // + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()) + " -> "
-            // + emprestimo.getStatus());
-            // if (emprestimo.getDataDevolucao() != null) {
-            // System.out.println(
-            // emprestimo.getStatus() + " - " +
-            // utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
-
-            // }
-            // System.out.println("-----------------------------");
-            // }
         }
     }
 }

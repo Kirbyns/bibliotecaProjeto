@@ -36,6 +36,15 @@ public class Utilitarios {
         return 3;
     }
 
+    public Funcionario findFuncionarioByLogin(String email, String senha, ArrayList<Funcionario> funcionarios) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
+                return funcionario;
+            }
+        }
+        return null;
+    }
+
     public Long maskaraCPF(String cpf) {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
     }
