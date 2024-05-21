@@ -96,4 +96,33 @@ public class Utilitarios {
         }
         return null;
     }
+
+    public Exemplar findExemplarById(int id, ArrayList<Exemplar> exemplares) {
+        for (Exemplar exemplar : exemplares) {
+            if (id == exemplar.getId()) {
+                return exemplar;
+            }
+        }
+        return null;
+    }
+
+    public Usuario findUsuarioById(int id, ArrayList<Usuario> usuarios) {
+        for (Usuario usuario : usuarios) {
+            if (id == usuario.getMatricula()) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public boolean verificarEmprestimo(int idExemplar, ArrayList<Emprestimo> emprestimos) {
+        for (Emprestimo emprestimo : emprestimos) {
+            if (idExemplar == emprestimo.getExemplar().getId()) {
+                if (emprestimo.getStatus().equals("Emprestado")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

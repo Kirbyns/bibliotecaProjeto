@@ -127,9 +127,47 @@ public class Main {
 
                     break;
                 case 2:
+                    relatorio.gerarRelatorioLivrosNaoEmprestados(biblioteca.getExemplares(),
+                            biblioteca.getEmprestimos());
+                    relatorio.listarUsuarios(biblioteca);
 
+                    System.out.println("\nInsira os dados do novo empréstimo:");
+                    System.out.println("Id do Exemplar:");
+                    int id_exemplar = sc.nextInt();
+                    System.out.println("Id do Usário:");
+                    int id_user = sc.nextInt();
+                    LocalDate data_emprestimo = LocalDate.now();
+                    String status_emprestimo = "Emprestado";
+
+                    Usuario user_emprestando = utilitarios.findUsuarioById(id_user, biblioteca.getUsuarios());
+
+                    Exemplar exemplar_emprestando = utilitarios.findExemplarById(id_exemplar,
+                            biblioteca.getExemplares());
+
+                    if (user_emprestando == null) {
+                        System.out.println("Usário inexistente!");
+                        break;
+                    }
+                    if (exemplar_emprestando == null) {
+                        System.out.println("Exemplar inexistente!");
+                        break;
+                    }
+                    if (utilitarios.verificarEmprestimo(id_exemplar, biblioteca.getEmprestimos())) {
+                        System.out.println("Exemplar indisponível!");
+                        break;
+                    }
+
+                    Emprestimo new_emprestimo = new Emprestimo(utilitarios.generateIdEmprestimo(), data_emprestimo,
+                            status_emprestimo, exemplar_emprestando,
+                            user_emprestando);
+
+                    biblioteca.adicionarEmprestimo(new_emprestimo);
+                    user_emprestando.adicionarEmprestimo(new_emprestimo);
+
+                    System.out.println("Empréstimo realizado com sucesso!");
                     break;
                 case 3:
+
                     System.out.println("\nInsira os dados do novo usário:");
                     System.out.println("Nome:");
                     String nome_user = sc.next();
