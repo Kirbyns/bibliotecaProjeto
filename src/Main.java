@@ -102,6 +102,46 @@ public class Main {
                 case 1:
                     break;
                 case 3:
+                    System.out.println("\nInsira os dados do novo usário:");
+                    System.out.println("Nome:");
+                    String nome_user = sc.next();
+                    System.out.println("Idade:");
+                    int idade_user = sc.nextInt();
+                    System.out.println("CPF:");
+                    String cpf_user = sc.next();
+
+                    Usuario new_usuario = new Usuario(nome_user, idade_user, utilitarios.maskaraCPF(cpf_user),
+                            utilitarios.generateIdUsuario());
+
+                    biblioteca.adicionarUsuario(new_usuario);
+                    System.out.println("\nUsário " + new_usuario.getNome() + " adicionado com sucesso!");
+                    break;
+
+                case 4:
+                    System.out.println("\nInsira os dados do novo funcionário:");
+
+                    System.out.println("Nome:");
+                    String nome_func = sc.next();
+                    System.out.println("Idade:");
+                    int idade_func = sc.nextInt();
+                    System.out.println("Cargo:");
+                    String cargo = sc.next();
+                    System.out.println("Salário:");
+                    double salario = sc.nextDouble();
+                    LocalDate dataAdmissao = LocalDate.now();
+                    System.out.println("CPF:");
+                    String cpf_func = sc.next();
+                    System.out.println("Email:");
+                    String email_func = sc.next();
+                    System.out.println("Senha:");
+                    String senha_func = sc.next();
+
+                    Funcionario new_funcionario = new Funcionario(cargo, salario, dataAdmissao, nome_func, idade_func,
+                            utilitarios.maskaraCPF(cpf_func),
+                            email_func, senha_func);
+
+                    biblioteca.adicionarFuncionarios(new_funcionario);
+                    System.out.println("\nFuncionário " + new_funcionario.getNome() + " adicionado com sucesso!");
                     break;
                 case 5:
                     relatorio.gerarRelatorioEmprestimosBiblioteca(biblioteca);
@@ -139,7 +179,7 @@ public class Main {
             }
         }
 
-        System.out.println("Até mais!");
+        System.out.println("\nAté mais!");
         // Encerrando o programa
         sc.close();
     }
