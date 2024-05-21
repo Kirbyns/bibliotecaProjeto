@@ -107,7 +107,8 @@ public class Relatorio {
 
         System.out.println("\nFuncionários:");
         for (Funcionario funcionario : biblioteca.getFuncionarios()) {
-            System.out.println("\n" + funcionario.getNome());
+            System.out.println("\n" + funcionario.getIdFuncionario() + " - " + funcionario.getNome());
+            System.out.println(utilitarios.showCPFString(funcionario.getCpf()));
             System.out.println(funcionario.getCargo());
             System.out.println(funcionario.getSalario());
             System.out.println(utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));

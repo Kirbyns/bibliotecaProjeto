@@ -12,6 +12,8 @@ public class Utilitarios {
 
     List<Integer> idUsuario = new ArrayList<>();
 
+    List<Integer> idFuncionario = new ArrayList<>();
+
     List<Integer> idEmprestimo = new ArrayList<>();
 
     List<Integer> idExemplar = new ArrayList<>();
@@ -29,12 +31,56 @@ public class Utilitarios {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
     }
 
+    public String showCPFString(Long cpf) {
+
+        String cpf_string = Long.toString(cpf);
+
+        String show_cpf = null;
+
+        for (int i = 0; i < cpf_string.length(); i++) {
+
+            char cpf_char = cpf_string.charAt(i);
+
+            if (i == 0) {
+                show_cpf = "";
+            }
+
+            if (i == 3 || i == 6) {
+                show_cpf = show_cpf + "." + cpf_char;
+
+            } else if (i == 9) {
+                show_cpf = show_cpf + "-" + cpf_char;
+            } else {
+                show_cpf = show_cpf + cpf_char;
+            }
+        }
+
+        return show_cpf;
+    }
+
     public String maskaraDate(LocalDate lt) {
         return lt.format(formatter);
     }
 
     public LocalDate addDataDevolucao(LocalDate lt) {
         return lt.plusDays(30);
+    }
+
+    public int generateIdFuncionario() {
+        Random random = new Random();
+        int newNumber;
+
+        if (idFuncionario.size() > 0) {
+            // Generate numbers until a unique one is found
+            do {
+                newNumber = random.nextInt(999);
+            } while (idFuncionario.contains(newNumber));
+        } else {
+            newNumber = random.nextInt(999);
+        }
+
+        idFuncionario.add(newNumber);
+        return newNumber;
     }
 
     public int generateIdUsuario() {
@@ -101,6 +147,15 @@ public class Utilitarios {
         for (Exemplar exemplar : exemplares) {
             if (id == exemplar.getId()) {
                 return exemplar;
+            }
+        }
+        return null;
+    }
+
+    public Funcionario findFuncionarioById(int id, ArrayList<Funcionario> funcionarios) {
+        for (Funcionario funcionario : funcionarios) {
+            if (id == funcionario.getIdFuncionario()) {
+                return funcionario;
             }
         }
         return null;

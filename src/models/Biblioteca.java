@@ -43,7 +43,7 @@ public class Biblioteca {
 
         emprestimo.setDataDevolucao(LocalDate.now());
         emprestimo.setStatus("Devolvido");
-        System.out.println("\n" + emprestimo.getExemplar().getTitulo() + " foi devolvido com sucesso!");
+        System.out.println("\n" + emprestimo.getExemplar().getTitulo() + " foi devolvido com sucesso!\n");
     }
 
     public ArrayList<Exemplar> getExemplares() {

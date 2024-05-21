@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Funcionario extends Pessoa {
 
+    private final int idFuncionario;
     private String cargo;
     private double salario;
     private LocalDate dataDeAdmissao;
@@ -11,13 +12,18 @@ public class Funcionario extends Pessoa {
     private String senha;
 
     public Funcionario(String cargo, double salario, LocalDate dataDeAdmissao, String nome, int idade, Long cpf,
-            String email, String senha) {
+            String email, String senha, int idFuncionario) {
         super(nome, idade, cpf);
         this.cargo = cargo;
         this.salario = salario;
         this.dataDeAdmissao = dataDeAdmissao;
         this.email = email;
         this.senha = senha;
+        this.idFuncionario = idFuncionario;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
     }
 
     public String getCargo() {
