@@ -1,7 +1,6 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Biblioteca {
     private ArrayList<Exemplar> exemplares;
@@ -42,11 +41,11 @@ public class Biblioteca {
         emprestimo.setStatus("Devolvido");
     }
 
-    public List<Exemplar> getExemplares() {
+    public ArrayList<Exemplar> getExemplares() {
         return exemplares;
     }
 
-    public List<Emprestimo> getEmprestimos() {
+    public ArrayList<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 

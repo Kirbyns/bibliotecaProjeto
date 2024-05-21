@@ -11,10 +11,10 @@ public class Emprestimo {
     private Usuario usuario;
 
     // Construtor
-    public Emprestimo(int id, LocalDate dataRetirada, LocalDate dataDevolucao, String status, Exemplar exemplar, Usuario usuario) {
+    public Emprestimo(int id, LocalDate dataRetirada, String status, Exemplar exemplar, Usuario usuario) {
         this.id = id;
         this.dataRetirada = dataRetirada;
-        this.dataDevolucao = dataDevolucao;
+        this.dataDevolucao = dataRetirada.plusDays(30);
         this.status = status;
         this.exemplar = exemplar;
         this.usuario = usuario;
@@ -65,4 +65,3 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 }
-

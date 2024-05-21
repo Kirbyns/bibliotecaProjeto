@@ -10,12 +10,11 @@ public class Utilitarios {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    List<Long> idUsuario = new ArrayList<>();
+    List<Integer> idUsuario = new ArrayList<>();
 
-    List<Long> idEmprestimo = new ArrayList<>();
+    List<Integer> idEmprestimo = new ArrayList<>();
 
-    List<Long> idExemplar = new ArrayList<>();
-
+    List<Integer> idExemplar = new ArrayList<>();
 
     public Long maskaraCPF(String cpf) {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
@@ -29,43 +28,53 @@ public class Utilitarios {
         return lt.plusDays(30);
     }
 
-    public Long generateIdUsuario(){
+    public int generateIdUsuario() {
         Random random = new Random();
-        long newNumber;
+        int newNumber;
 
         if (idUsuario.size() > 0) {
             // Generate numbers until a unique one is found
             do {
-                newNumber = random.nextLong();
+                newNumber = random.nextInt(999);
             } while (idUsuario.contains(newNumber));
         } else {
-            newNumber = random.nextLong();
+            newNumber = random.nextInt(999);
         }
 
         idUsuario.add(newNumber);
         return newNumber;
     }
 
-    public Long generateIdEmprestimo(){
+    public int generateIdEmprestimo() {
         Random random = new Random();
-        long newNumber;
+        int newNumber;
 
-        // Generate numbers until a unique one is found
-        do {
-            newNumber = random.nextLong();
-        } while (idEmprestimo.contains(newNumber));
+        if (idEmprestimo.size() > 0) {// Generate numbers until a unique one is found
+            do {
+                newNumber = random.nextInt(999);
+            } while (idEmprestimo.contains(newNumber));
+        } else {
+            newNumber = random.nextInt(999);
+        }
+
+        idEmprestimo.add(newNumber);
 
         return newNumber;
     }
 
-    public Long generateIdExemplar(){
+    public int generateIdExemplar() {
         Random random = new Random();
-        long newNumber;
+        int newNumber;
 
-        // Generate numbers until a unique one is found
-        do {
-            newNumber = random.nextLong();
-        } while (idExemplar.contains(newNumber));
+        if (idExemplar.size() > 0) {// Generate numbers until a unique one is found
+            do {
+                newNumber = random.nextInt(999);
+            } while (idExemplar.contains(newNumber));
+        } else {
+            newNumber = random.nextInt(999);
+        }
+
+        idExemplar.add(newNumber);
 
         return newNumber;
     }
