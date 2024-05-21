@@ -22,31 +22,39 @@ public class ActionsFuncSemAcesso extends Action {
             System.out.println("0. Encerrar");
             System.out.println("1. Tela do Funcionário");
 
-            response = sc.nextInt();
+            try {
 
-            // Verificando a resposta
-            switch (response) {
-                case 0:
-                    run = false;
-                    break;
-                case 1:
-                    try {
+                response = sc.nextInt();
 
-                        if (funcionario == null) {
-                            System.out.println("Funcionário inexistente");
-                            break;
-                        }
-
-                        editing_funcByFunc(funcionario, sc);
-
+                // Verificando a resposta
+                switch (response) {
+                    case 0:
+                        run = false;
                         break;
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o funcionário!");
-                        System.out.println("Erro: " + e);
-                    }
-                default:
-                    System.out.println("\nResposta inválida!");
-                    break;
+                    case 1:
+                        try {
+
+                            if (funcionario == null) {
+                                System.out.println("Funcionário inexistente");
+                                break;
+                            }
+
+                            editing_funcByFunc(funcionario, sc);
+
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o funcionário!");
+                            System.out.println("Erro: " + e);
+                        }
+                    default:
+                        System.out.println("\nResposta inválida!");
+                        break;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Resposta inválida!");
+                System.out.println("Erro: " + e);
+                sc.nextLine();
             }
         }
     }
