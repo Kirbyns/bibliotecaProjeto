@@ -16,6 +16,15 @@ public class Utilitarios {
 
     List<Integer> idExemplar = new ArrayList<>();
 
+    public boolean verificarLogin(String email, String senha, Biblioteca biblioteca) {
+        for (Funcionario funcionario : biblioteca.getFuncionarios()) {
+            if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Long maskaraCPF(String cpf) {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
     }
@@ -77,5 +86,14 @@ public class Utilitarios {
         idExemplar.add(newNumber);
 
         return newNumber;
+    }
+
+    public Emprestimo findEmprestimoById(int id, ArrayList<Emprestimo> emprestimos) {
+        for (Emprestimo emprestimo : emprestimos) {
+            if (id == emprestimo.getId()) {
+                return emprestimo;
+            }
+        }
+        return null;
     }
 }
