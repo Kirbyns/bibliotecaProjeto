@@ -100,6 +100,34 @@ public class Main {
                     run = false;
                     break;
                 case 1:
+                    System.out.println("\nInsira os dados do novo exemplar:");
+
+                    System.out.println("Autor:");
+                    sc.nextLine();
+                    String autor = sc.nextLine();
+                    System.out.println("Título:");
+                    String titulo = sc.nextLine();
+                    System.out.println("Editora:");
+                    String editora = sc.nextLine();
+                    System.out.println("Ano de Publicação:");
+                    int ano_publicacao = sc.nextInt();
+                    System.out.println("Mês de Publicação:");
+                    int mes_publicacao = sc.nextInt();
+                    System.out.println("Dia de Publicação:");
+                    int dia_publicacao = sc.nextInt();
+
+                    Exemplar new_exemplar = new Exemplar(autor, titulo, editora,
+                            LocalDate.of(ano_publicacao, mes_publicacao, dia_publicacao),
+                            utilitarios.generateIdExemplar());
+
+                    biblioteca.adicionarExemplar(new_exemplar);
+
+                    System.out.println("\nExemplar " + new_exemplar.getId() + " - " + new_exemplar.getTitulo()
+                            + " adicionado com sucesso!");
+
+                    break;
+                case 2:
+
                     break;
                 case 3:
                     System.out.println("\nInsira os dados do novo usário:");
