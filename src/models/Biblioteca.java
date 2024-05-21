@@ -38,7 +38,10 @@ public class Biblioteca {
     }
 
     public void devolverExemplar(Emprestimo emprestimo) {
+        this.emprestimos.remove(this.emprestimos.indexOf(emprestimo));
+
         emprestimo.setStatus("Devolvido");
+        System.out.println("\n" + emprestimo.getExemplar().getTitulo() + " foi devolvido com sucesso!");
     }
 
     public ArrayList<Exemplar> getExemplares() {

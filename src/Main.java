@@ -19,7 +19,7 @@ public class Main {
 
         // Adicionando Funcionários
         Funcionario funcionario1 = new Funcionario("Diretor", 2800.00, LocalDate.now(), "Francisco Pavão", 23,
-                utilitarios.maskaraCPF("012394890-90"), "coord@gmail.com", "1234");
+                utilitarios.maskaraCPF("012394890-90"), "admin@gmail.com", "1234");
         Funcionario funcionario2 = new Funcionario("Bibliotecário Diurno", 1300.00, LocalDate.now(), "Ednea Suarez", 65,
                 utilitarios.maskaraCPF("741569852-32"), "bibliotecario.diurno@gmail.com", "1234");
         Funcionario funcionario3 = new Funcionario("Bibliotecário Noturno", 1800.00, LocalDate.now(), "Ângelo Alvares",
@@ -105,10 +105,15 @@ public class Main {
                     break;
                 case 5:
                     relatorio.gerarRelatorioEmprestimosBiblioteca(biblioteca);
-                    System.out.println("Insira o id do exemplar que deseja devolver:");
+                    System.out.println("Insira o id do emprestimo que deseja devolver:");
                     int idEmprestimo = sc.nextInt();
 
                     Emprestimo emprestimo = utilitarios.findEmprestimoById(idEmprestimo, biblioteca.getEmprestimos());
+
+                    if (emprestimo == null) {
+                        System.out.println("Exemplar inexistente");
+                        break;
+                    }
 
                     biblioteca.devolverExemplar(emprestimo);
                     break;

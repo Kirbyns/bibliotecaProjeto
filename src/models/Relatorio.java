@@ -6,6 +6,11 @@ public class Relatorio {
     Utilitarios utilitarios = new Utilitarios();
 
     public void gerarRelatorioEmprestimosBiblioteca(Biblioteca biblioteca) {
+
+        if (biblioteca.getEmprestimos().isEmpty()) {
+            System.out.println("\nNenhum empréstimo foi realizado na biblioteca.");
+            return;
+        }
         System.out.println("\nTodos os empréstimos da biblioteca:");
 
         for (Emprestimo emprestimo : biblioteca.getEmprestimos()) {
@@ -13,10 +18,15 @@ public class Relatorio {
             System.out.println(
                     "Id - Exemplar: \n" + emprestimo.getExemplar().getId() + " - "
                             + emprestimo.getExemplar().getTitulo());
-            System.out.println("Emprestado à: " + emprestimo.getUsuario().getNome());
+            System.out.println("Emprestado à: " + emprestimo.getUsuario().getNome() + " - "
+                    + emprestimo.getUsuario().getMatricula());
             System.out.println(
                     "Data de Início: " + utilitarios.maskaraDate(emprestimo.getDataRetirada()));
-            System.out.println("Data de Devolução Prevista: " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+            System.out.println(
+                    "Data de Devolução Prevista: " + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()));
+            if (emprestimo.getDataDevolucao() != null) {
+                System.out.println("Data de Devolução: " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+            }
             System.out.println("Status: " + emprestimo.getStatus());
             System.out.println("-----------------------------\n");
         }
@@ -32,7 +42,11 @@ public class Relatorio {
                             + emprestimo.getExemplar().getTitulo());
             System.out.println(
                     "Data de Início: " + utilitarios.maskaraDate(emprestimo.getDataRetirada()));
-            System.out.println("Data de Devolução Prevista: " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+            System.out.println(
+                    "Data de Devolução Prevista: " + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()));
+            if (emprestimo.getDataDevolucao() != null) {
+                System.out.println("Data de Devolução: " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+            }
             System.out.println("Status: " + emprestimo.getStatus());
             System.out.println("-----------------------------");
         }
@@ -82,13 +96,19 @@ public class Relatorio {
     public void listarUsuarios(Biblioteca biblioteca) {
         System.out.println("\nUsuários:");
         for (Usuario usuario : biblioteca.getUsuarios()) {
-            System.out.println(usuario.getNome());
-            System.out.println(usuario.getMatricula());
+            System.out.println(usuario.getMatricula() + " - " + usuario.getNome());
+            System.out.println("---------Histórico de Empréstimos-----------");
             for (Emprestimo emprestimo : usuario.getHistoricoDeEmprestimo()) {
                 System.out.println(emprestimo.getId() + " - " + emprestimo.getExemplar().getTitulo());
                 System.out.println(utilitarios.maskaraDate(emprestimo.getDataRetirada()) + " - "
-                        + utilitarios.maskaraDate(emprestimo.getDataDevolucao()) + " -> "
+                        + utilitarios.maskaraDate(emprestimo.getDataDevolucaoPrevista()) + " -> "
                         + emprestimo.getStatus());
+                if (emprestimo.getDataDevolucao() != null) {
+                    System.out.println(
+                            emprestimo.getStatus() + " - " + utilitarios.maskaraDate(emprestimo.getDataDevolucao()));
+
+                }
+                System.out.println("-----------------------------");
             }
         }
     }
