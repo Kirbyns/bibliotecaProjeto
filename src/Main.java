@@ -91,6 +91,8 @@ public class Main {
             System.out.println("8. Listar todos os Exemplares");
             System.out.println("9. Listar os Exemplares que podem ser Emprestados");
             System.out.println("10. Listar os Exemplares Emprestados");
+            System.out.println("11. Tela de Funcionários");
+            System.out.println("12. Tela de Usuários");
 
             response = sc.nextInt();
 
