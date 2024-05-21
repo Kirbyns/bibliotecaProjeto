@@ -193,7 +193,7 @@ public class ActionsFuncComAcesso extends Action {
                 case 10:
                     try {
                         relatorio.listarUsuarios(biblioteca);
-                        System.out.println("Qual usário deseja editar?");
+                        System.out.println("Qual o id do(a) usário(a) que deseja editar?");
                         int id_user = sc.nextInt();
                         Usuario usuario = utilitarios.findUsuarioById(id_user, biblioteca.getUsuarios());
                         if (usuario == null) {

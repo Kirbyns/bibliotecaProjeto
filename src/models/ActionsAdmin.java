@@ -219,7 +219,7 @@ public class ActionsAdmin extends Action {
                     try {
                         relatorio.listarFuncionarios(biblioteca);
 
-                        System.out.println("Qual funcionário(a) deseja editar?");
+                        System.out.println("Qual o id do(a) funcionário(a) que deseja editar?");
 
                         int id_func = sc.nextInt();
                         Funcionario funcionario = utilitarios.findFuncionarioById(id_func,
@@ -241,7 +241,7 @@ public class ActionsAdmin extends Action {
                 case 12:
                     try {
                         relatorio.listarUsuarios(biblioteca);
-                        System.out.println("Qual usário deseja editar?");
+                        System.out.println("Qual o id do(a) usário(a) que deseja editar?");
                         int id_user = sc.nextInt();
                         Usuario usuario = utilitarios.findUsuarioById(id_user, biblioteca.getUsuarios());
                         if (usuario == null) {

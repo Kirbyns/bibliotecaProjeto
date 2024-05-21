@@ -27,6 +27,20 @@ public abstract class Action {
         boolean editing_func = true;
 
         while (editing_func) {
+            System.out.println("\n-----------------------------");
+            System.out.println("\nId -> " + funcionario.getIdFuncionario());
+            System.out.println("\nNome atual -> \n" + funcionario.getNome());
+            System.out.println("\nCPF atual -> ");
+            System.out.println("\n" + utilitarios.showCPFString(funcionario.getCpf()));
+            System.out.println("\nCargo atual -> " + funcionario.getCargo());
+            System.out.println("\nSalário atual -> " + funcionario.getSalario());
+            System.out
+                    .println("\nData de admissão atual -> " + utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
+            System.out.println("\nEmail atual -> " + funcionario.getEmail());
+            System.out.println("\nRole no sistema -> " + funcionario.getRole());
+
+            System.out.println("\n-----------------------------");
+
             System.out
                     .println("O que deseja editar no(a) funcionário(a) " + funcionario.getNome() + "?");
             System.out.println("0 - Sair");
@@ -112,6 +126,20 @@ public abstract class Action {
         boolean editing_func = true;
 
         while (editing_func) {
+            System.out.println("\n-----------------------------");
+            System.out.println("\nId -> " + funcionario.getIdFuncionario());
+            System.out.println("\nNome atual -> \n" + funcionario.getNome());
+            System.out.println("\nCPF atual -> ");
+            System.out.println("\n" + utilitarios.showCPFString(funcionario.getCpf()));
+            System.out.println("\nCargo atual -> " + funcionario.getCargo());
+            System.out.println("\nSalário atual -> " + funcionario.getSalario());
+            System.out
+                    .println("\nData de admissão atual -> " + utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
+            System.out.println("\nEmail atual -> " + funcionario.getEmail());
+            System.out.println("\nRole no sistema -> " + funcionario.getRole());
+
+            System.out.println("\n-----------------------------");
+
             System.out
                     .println("O que deseja editar no(a) funcionário(a) " + funcionario.getNome() + "?");
             System.out.println("0 - Sair");
