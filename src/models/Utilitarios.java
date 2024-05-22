@@ -56,14 +56,12 @@ public class Utilitarios {
 
             for (Funcionario funcionario : biblioteca.getFuncionarios()) {
                 if (funcionario.getCpf().equals(cpf)) {
-                    System.out.println("1");
                     return false;
                 }
             }
 
             for (Usuario usuario : biblioteca.getUsuarios()) {
                 if (usuario.getCpf().equals(cpf)) {
-                    System.out.println("2");
                     return false;
                 }
             }
