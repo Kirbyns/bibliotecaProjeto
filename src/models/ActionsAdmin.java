@@ -9,6 +9,122 @@ public class ActionsAdmin extends Action {
         super(sc, biblioteca, relatorio, utilitarios);
     }
 
+    public void editing_func(Funcionario funcionario, Scanner sc) {
+        Utilitarios utilitarios = new Utilitarios();
+
+        boolean editing_func = true;
+
+        while (editing_func) {
+            System.out.println("\n-----------------------------");
+            System.out.println("\nId -> " + funcionario.getIdFuncionario());
+            System.out.println("\nNome atual -> \n" + funcionario.getNome());
+            System.out.println("\nIdade atual -> \n" + funcionario.getIdade());
+            System.out.println("\nCPF atual -> ");
+            System.out.println("\n" + utilitarios.showCPFString(funcionario.getCpf()));
+            System.out.println("\nCargo atual -> " + funcionario.getCargo());
+            System.out.println("\nSalário atual -> " + funcionario.getSalario());
+            System.out
+                    .println("\nData de admissão atual -> " + utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
+            System.out.println("\nEmail atual -> " + funcionario.getEmail());
+            System.out.println("\nRole no sistema -> " + funcionario.getRole());
+
+            System.out.println("\n-----------------------------");
+
+            System.out
+                    .println("O que deseja editar no(a) funcionário(a) " + funcionario.getNome() + "?");
+            System.out.println("0 - Sair");
+            System.out.println("1 - Nome");
+            System.out.println("2 - Idade");
+            System.out.println("3 - Cargo");
+            System.out.println("4 - Salário");
+            System.out.println("5 - CPF");
+            System.out.println("6 - Email");
+            System.out.println("7 - Senha");
+            int opcao_func = sc.nextInt();
+
+            switch (opcao_func) {
+                case 0:
+                    editing_func = false;
+                    break;
+                case 1:
+                    System.out.println("\nNome atual -> " + funcionario.getNome());
+                    System.out.println("Novo Nome:");
+                    sc.nextLine();
+                    String nome_func = sc.nextLine();
+                    funcionario.setNome(nome_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Novo nome: " + funcionario.getNome() + "\n");
+                    break;
+                case 2:
+                    System.out.println("\nIdade atual -> " + funcionario.getIdade());
+                    System.out.println("Nova idade:");
+                    sc.nextLine();
+                    int idade_func = sc.nextInt();
+                    funcionario.setIdade(idade_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
+                    break;
+                case 3:
+                    System.out.println("\nCargo atual -> " + funcionario.getCargo());
+                    System.out.println("Novo Cargo:");
+                    sc.nextLine();
+                    String cargo_func = sc.nextLine();
+                    funcionario.setCargo(cargo_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Novo cargo: " + funcionario.getCargo() + "\n");
+                    break;
+                case 4:
+                    System.out.println("\nSalário atual -> " + funcionario.getSalario());
+                    System.out.println("Novo Salário:");
+                    double salario_func = sc.nextDouble();
+                    funcionario.setSalario(salario_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Novo salário: " + funcionario.getSalario() + "\n");
+                    break;
+                case 5:
+                    System.out
+                            .println("\nCPF atual -> "
+                                    + utilitarios.showCPFString(funcionario.getCpf()));
+                    System.out.println("Novo CPF:");
+                    String cpf_func = sc.next();
+
+                    if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
+                        System.out.println("CPF já cadastrado ou inválido!");
+                        break;
+                    }
+
+                    if (utilitarios.maskaraCPF(cpf_func) == null) {
+                        System.out.println("CPF inválido!");
+                        break;
+                    }
+                    funcionario.setCpf(utilitarios.maskaraCPF(cpf_func));
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println(
+                            "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
+                    break;
+                case 6:
+                    System.out.println("\nEmail atual -> " + funcionario.getEmail());
+                    System.out.println("Novo Email:");
+                    String email_func = sc.next();
+                    funcionario.setEmail(email_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Novo email: " + funcionario.getEmail() + "\n");
+                    break;
+                case 7:
+                    System.out.println("\nSenha atual -> " + funcionario.getSenha());
+                    System.out.println("Nova Senha:");
+                    String senha_func = sc.next();
+                    funcionario.setSenha(senha_func);
+                    System.out.println("\nFuncionário(a) editado com sucesso!");
+                    System.out.println("Nova senha: " + funcionario.getSenha() + "\n");
+                    break;
+                default:
+                    System.out.println("\nResposta inválida!");
+                    break;
+            }
+        }
+    }
+
     @Override
     public void menu() {
         boolean run = true;
