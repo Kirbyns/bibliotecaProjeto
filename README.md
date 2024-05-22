@@ -19,18 +19,24 @@ O projeto deve conter no mínimo 10 classes Java, com um nível médio de comple
 - Biblioteca: Contém um array de Exemplares e métodos para gerenciar empréstimos, devoluções e cadastros.
 - Relatorio: Classe responsável por gerar relatórios de empréstimos, livros disponíveis, etc.
 - Main: Classe principal para inicialização do sistema e interação com o usuário através do console.
-- Utilitarios: Classe com métodos utilitários, como validação de CPF e cálculo de datas.
+- Utilitarios: Classe com métodos utilitários, como validação de CPF, máscara para datas e geradores de Ids únicos e randômicos.
+- Action: Representa as ações que cada role poderá executar no sistema, com métodos para editar informações básicas de funcionários.
+- ActionsAdmin: Herda de Action e altera o método do menu e editar funcionário, tendo total acesso ao sistema.
+- ActionsFuncComAcesso: Herda de Action, alterando o método do menu, possuindo um acesso limitado ao sistema;
+- ActionsFuncSemAcesso: Herda de Action, modificando o método do menu, tenho permissão para somente alterar informações básicas de si mesmo e nada mais.
 
 ## Recursos de POO utilizados
 
-- Herança: Utilizada nas classes Usuario e Funcionario, que herdam de Pessoa.
+- Herança: Utilizada nas classes Usuario e Funcionario, que herdam de Pessoa, e na clase Exemplar, que herda de Livro.
 - Encapsulamento: Atributos privados em todas as classes com métodos getters e setters para acesso.
-- Polimorfismo: Método de empréstimo na classe Biblioteca que aceita tanto usuários quanto funcionários como parâmetro, permitindo polimorfismo de tipo.
+- Polimorfismo: Presente na Action e suas filhas, onde o método menu() é alterado de acordo com a filha que está sendo instanciada. Também presente com o metódo de editar o funcionário, que é alterado na clase ActionsAdmin, permitindo um maior controle sobre os dados do funcionário.
+- Arrays: Utilizado em Utilitários, para guardar o Ids existentes, na Biblioteca, para guardar os usuários, empréstimos, funcionários e exemplares que possui, e em Usuário, para guardar o histórico de Empréstimos.
 
 ## Estrutura do Projeto
-```
+
+```java
 src/
-│   
+│
 ├── models/: Pacote contendo as classes do modelo.
 │   ├── Pessoa.java
 │   ├── Usuario.java
