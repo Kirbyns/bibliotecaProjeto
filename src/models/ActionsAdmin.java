@@ -11,6 +11,7 @@ public class ActionsAdmin extends Action {
     }
 
     // Método para abrir menu e editar os dados de um funcionário
+    @Override
     public void editing_func(Funcionario funcionario, Scanner sc) {
         Utilitarios utilitarios = new Utilitarios();
 

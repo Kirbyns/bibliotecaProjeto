@@ -215,7 +215,7 @@ public class ActionsFuncComAcesso extends Action {
                             }
 
                             // Abre o menu do(a) funcionário(a) com acesso limitado
-                            editing_funcByFunc(funcionario, sc);
+                            editing_func(funcionario, sc);
 
                             break;
                         } catch (Exception e) {

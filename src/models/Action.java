@@ -24,7 +24,7 @@ public abstract class Action {
     }
 
     // Método para abrir menu e o funcionário(a) editar os seus dados
-    public void editing_funcByFunc(Funcionario funcionario, Scanner sc) {
+    public void editing_func(Funcionario funcionario, Scanner sc) {
         Utilitarios utilitarios = new Utilitarios();
 
         boolean editing_func = true;
