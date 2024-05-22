@@ -7,18 +7,22 @@ public class ActionsFuncComAcesso extends Action {
 
     Funcionario funcionario;
 
+    // Construtor da classe
     public ActionsFuncComAcesso(Funcionario funcionario, Scanner sc, Biblioteca biblioteca, Relatorio relatorio,
             Utilitarios utilitarios) {
         super(sc, biblioteca, relatorio, utilitarios);
         this.funcionario = funcionario;
     }
 
+    // Polimorfismo para o método menu, criando o menu para o funcionário com
+    // acesso limitado ao sistema
     @Override
     public void menu() {
         boolean run = true;
         while (run) {
             int response;
 
+            // Criando o menu
             System.out.println("\nO que deseja?");
             System.out.println("0. Encerrar");
             System.out.println("1. Adicionar Exemplar");
@@ -38,9 +42,13 @@ public class ActionsFuncComAcesso extends Action {
 
                 // Verificando a resposta
                 switch (response) {
+
+                    // Retorna para o login
                     case 0:
                         run = false;
                         break;
+
+                    // Adiciona um novo exemplar
                     case 1:
                         try {
                             System.out.println("\nInsira os dados do novo exemplar:");
@@ -74,6 +82,8 @@ public class ActionsFuncComAcesso extends Action {
                             System.out.println("Erro: " + e);
                             break;
                         }
+
+                        // Cria um novo empréstimo
                     case 2:
                         try {
                             relatorio.gerarRelatorioLivrosNaoEmprestados(biblioteca.getExemplares(),
@@ -121,6 +131,8 @@ public class ActionsFuncComAcesso extends Action {
                             System.out.println("Erro: " + e);
                             break;
                         }
+
+                        // Cria um novo usário
                     case 3:
                         try {
                             System.out.println("\nInsira os dados do novo usário:");
@@ -149,6 +161,7 @@ public class ActionsFuncComAcesso extends Action {
                             break;
                         }
 
+                        // Devolve um empréstimo
                     case 4:
                         try {
                             relatorio.gerarRelatorioEmprestimosBiblioteca(biblioteca);
@@ -170,19 +183,29 @@ public class ActionsFuncComAcesso extends Action {
                             System.out.println("Erro: " + e);
                             break;
                         }
+
+                        // Lista os Usuários da biblioteca
                     case 5:
                         relatorio.listarUsuarios(biblioteca);
                         break;
+
+                    // Lista todos os Exemplares da biblioteca
                     case 6:
                         relatorio.gerarRelatorioTodosOsLivros(biblioteca.getExemplares());
                         break;
+
+                    // Lista os Exemplares que podem ser emprestados
                     case 7:
                         relatorio.gerarRelatorioLivrosNaoEmprestados(biblioteca.getExemplares(),
                                 biblioteca.getEmprestimos());
                         break;
+
+                    // Lista os Exemplares emprestados
                     case 8:
                         relatorio.gerarRelatorioEmprestimosBiblioteca(biblioteca);
                         break;
+
+                    // Tela do funcionário logado
                     case 9:
                         try {
 
@@ -191,6 +214,7 @@ public class ActionsFuncComAcesso extends Action {
                                 break;
                             }
 
+                            // Abre o menu do(a) funcionário(a) com acesso limitado
                             editing_funcByFunc(funcionario, sc);
 
                             break;
@@ -198,6 +222,8 @@ public class ActionsFuncComAcesso extends Action {
                             System.out.println("Erro ao editar o funcionário!");
                             System.out.println("Erro: " + e);
                         }
+
+                        // Tela dos Usuários da biblioteca
                     case 10:
                         try {
                             relatorio.listarUsuarios(biblioteca);
@@ -208,6 +234,8 @@ public class ActionsFuncComAcesso extends Action {
                                 System.out.println("Usário inexistente");
                                 break;
                             }
+
+                            // Abre o menu do(a) usário(a)
                             editing_user(usuario, sc, biblioteca, relatorio);
                             break;
                         } catch (Exception e) {

@@ -18,6 +18,7 @@ public class Utilitarios {
 
     List<Integer> idExemplar = new ArrayList<>();
 
+    // Método para verificar login
     public boolean verificarLogin(String email, String senha, Biblioteca biblioteca) {
         for (Funcionario funcionario : biblioteca.getFuncionarios()) {
             if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
@@ -27,6 +28,7 @@ public class Utilitarios {
         return false;
     }
 
+    // Método para verificar role do Funcionário
     public int getCargoFuncionario(String email, String senha, Biblioteca biblioteca) {
         for (Funcionario funcionario : biblioteca.getFuncionarios()) {
             if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
@@ -36,6 +38,7 @@ public class Utilitarios {
         return 3;
     }
 
+    // Método para encontrar um Funcionário pelo login
     public Funcionario findFuncionarioByLogin(String email, String senha, ArrayList<Funcionario> funcionarios) {
         for (Funcionario funcionario : funcionarios) {
             if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
@@ -45,10 +48,12 @@ public class Utilitarios {
         return null;
     }
 
+    // Método para transformar o CPF em Long
     public Long maskaraCPF(String cpf) {
         return Long.valueOf(cpf.replaceAll("[^0-9]", ""));
     }
 
+    // Método para verificar se o CPF tem 11 digitos e se o CPF existe
     public boolean verficarCPF(Long cpf, Biblioteca biblioteca) {
 
         String cpf_string = Long.toString(cpf);
@@ -72,6 +77,7 @@ public class Utilitarios {
         }
     }
 
+    // Método para mostrar o CPF em formato de String
     public String showCPFString(Long cpf) {
 
         String cpf_string = Long.toString(cpf);
@@ -99,20 +105,17 @@ public class Utilitarios {
         return show_cpf;
     }
 
+    // Método para mostrar a data em formato de String
     public String maskaraDate(LocalDate lt) {
         return lt.format(formatter);
     }
 
-    public LocalDate addDataDevolucao(LocalDate lt) {
-        return lt.plusDays(30);
-    }
-
+    // Método para gerar um novo ID de Funcionário
     public int generateIdFuncionario() {
         Random random = new Random();
         int newNumber;
 
         if (idFuncionario.size() > 0) {
-            // Generate numbers until a unique one is found
             do {
                 newNumber = random.nextInt(999);
             } while (idFuncionario.contains(newNumber));
@@ -124,12 +127,12 @@ public class Utilitarios {
         return newNumber;
     }
 
+    // Método para gerar um novo ID de Usuário
     public int generateIdUsuario() {
         Random random = new Random();
         int newNumber;
 
         if (idUsuario.size() > 0) {
-            // Generate numbers until a unique one is found
             do {
                 newNumber = random.nextInt(999);
             } while (idUsuario.contains(newNumber));
@@ -141,11 +144,12 @@ public class Utilitarios {
         return newNumber;
     }
 
+    // Método para gerar um novo ID de Empréstimo
     public int generateIdEmprestimo() {
         Random random = new Random();
         int newNumber;
 
-        if (idEmprestimo.size() > 0) {// Generate numbers until a unique one is found
+        if (idEmprestimo.size() > 0) {
             do {
                 newNumber = random.nextInt(999);
             } while (idEmprestimo.contains(newNumber));
@@ -158,11 +162,12 @@ public class Utilitarios {
         return newNumber;
     }
 
+    // Método para gerar um novo ID de Exemplar
     public int generateIdExemplar() {
         Random random = new Random();
         int newNumber;
 
-        if (idExemplar.size() > 0) {// Generate numbers until a unique one is found
+        if (idExemplar.size() > 0) {
             do {
                 newNumber = random.nextInt(999);
             } while (idExemplar.contains(newNumber));
@@ -175,6 +180,7 @@ public class Utilitarios {
         return newNumber;
     }
 
+    // Método para encontrar um Empréstimo pelo ID
     public Emprestimo findEmprestimoById(int id, ArrayList<Emprestimo> emprestimos) {
         for (Emprestimo emprestimo : emprestimos) {
             if (id == emprestimo.getId()) {
@@ -184,6 +190,7 @@ public class Utilitarios {
         return null;
     }
 
+    // Método para encontrar um Exemplar pelo ID
     public Exemplar findExemplarById(int id, ArrayList<Exemplar> exemplares) {
         for (Exemplar exemplar : exemplares) {
             if (id == exemplar.getId()) {
@@ -193,6 +200,7 @@ public class Utilitarios {
         return null;
     }
 
+    // Método para encontrar um Funcionário pelo ID
     public Funcionario findFuncionarioById(int id, ArrayList<Funcionario> funcionarios) {
         for (Funcionario funcionario : funcionarios) {
             if (id == funcionario.getIdFuncionario()) {
@@ -202,6 +210,7 @@ public class Utilitarios {
         return null;
     }
 
+    // Método para encontrar um Usuário pelo ID
     public Usuario findUsuarioById(int id, ArrayList<Usuario> usuarios) {
         for (Usuario usuario : usuarios) {
             if (id == usuario.getMatricula()) {
@@ -211,6 +220,7 @@ public class Utilitarios {
         return null;
     }
 
+    // Método para verificar se um Exemplar está emprestado
     public boolean verificarEmprestimo(int idExemplar, ArrayList<Emprestimo> emprestimos) {
         for (Emprestimo emprestimo : emprestimos) {
             if (idExemplar == emprestimo.getExemplar().getId()) {

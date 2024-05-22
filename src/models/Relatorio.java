@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Relatorio {
     Utilitarios utilitarios = new Utilitarios();
 
+    // Método para gerar o relatório de empréstimos da biblioteca
     public void gerarRelatorioEmprestimosBiblioteca(Biblioteca biblioteca) {
 
         if (biblioteca.getEmprestimos().isEmpty()) {
@@ -32,6 +33,7 @@ public class Relatorio {
         }
     }
 
+    // Método para gerar o relatório de empréstimos de um usuario
     public void gerarRelatorioEmprestimosUsuario(Usuario usuario) {
 
         if (usuario.getHistoricoDeEmprestimo().isEmpty()) {
@@ -58,6 +60,7 @@ public class Relatorio {
         }
     }
 
+    // Método para gerar o relatório de todos os livros
     public void gerarRelatorioTodosOsLivros(ArrayList<Exemplar> exemplares) {
 
         if (exemplares.isEmpty()) {
@@ -75,6 +78,8 @@ public class Relatorio {
         }
     }
 
+    // Método para gerar o relatório de livros não emprestados/disponíveis para
+    // empréstimo
     public void gerarRelatorioLivrosNaoEmprestados(ArrayList<Exemplar> exemplares, ArrayList<Emprestimo> emprestimos) {
 
         ArrayList<Integer> livrosEmprestadosIds = new ArrayList<Integer>();
@@ -99,6 +104,7 @@ public class Relatorio {
         }
     }
 
+    // Método para gerar o relatório de todos os funcionários
     public void listarFuncionarios(Biblioteca biblioteca) {
         if (biblioteca.getFuncionarios().isEmpty()) {
             System.out.println("Nenhum Funcionário Cadastrado");
@@ -112,10 +118,12 @@ public class Relatorio {
             System.out.println(funcionario.getCargo());
             System.out.println(funcionario.getSalario());
             System.out.println(utilitarios.maskaraDate(funcionario.getDataDeAdmissao()));
+            System.out.println("Role: " + funcionario.getRole());
             System.out.println("-----------------------------");
         }
     }
 
+    // Método para gerar o relatório de todos os usuários
     public void listarUsuarios(Biblioteca biblioteca) {
         if (biblioteca.getUsuarios().isEmpty()) {
             System.out.println("Nenhum Usuário Cadastrado");

@@ -9,6 +9,7 @@ public class Biblioteca {
     private ArrayList<Usuario> usuarios;
     private ArrayList<Funcionario> funcionarios;
 
+    // Construtor da classe
     public Biblioteca() {
         this.exemplares = new ArrayList<Exemplar>();
         this.emprestimos = new ArrayList<Emprestimo>();
@@ -16,28 +17,27 @@ public class Biblioteca {
         this.funcionarios = new ArrayList<Funcionario>();
     }
 
+    // Método para adicionar um exemplar à biblioteca
     public void adicionarExemplar(Exemplar exemplar) {
         exemplares.add(exemplar);
     }
 
+    // Método para adicionar um emprestimo à biblioteca
     public void adicionarEmprestimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
     }
 
+    // Método para adicionar um usuario à biblioteca
     public void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
 
+    // Método para adicionar um funcionário à biblioteca
     public void adicionarFuncionarios(Funcionario funcionario) {
         funcionarios.add(funcionario);
     }
 
-    public void emprestarExemplar(Usuario usuario, Emprestimo emprestimo) {
-        this.emprestimos.add(emprestimo);
-
-        usuario.adicionarEmprestimo(emprestimo);
-    }
-
+    // Método para devolver um exemplar
     public void devolverExemplar(Emprestimo emprestimo) {
         this.emprestimos.remove(this.emprestimos.indexOf(emprestimo));
 
@@ -46,6 +46,7 @@ public class Biblioteca {
         System.out.println("\n" + emprestimo.getExemplar().getTitulo() + " foi devolvido com sucesso!\n");
     }
 
+    // Getters
     public ArrayList<Exemplar> getExemplares() {
         return exemplares;
     }

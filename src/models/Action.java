@@ -23,6 +23,7 @@ public abstract class Action {
 
     }
 
+    // Método para abrir menu e o funcionário(a) editar os seus dados
     public void editing_funcByFunc(Funcionario funcionario, Scanner sc) {
         Utilitarios utilitarios = new Utilitarios();
 
@@ -119,6 +120,8 @@ public abstract class Action {
         }
     }
 
+    // Método para abrir menu e editar os dados de um usuario e adicionar
+    // empréstimos ao mesmo
     public void editing_user(Usuario usuario, Scanner sc, Biblioteca biblioteca, Relatorio relatorio) {
         Utilitarios utilitarios = new Utilitarios();
 

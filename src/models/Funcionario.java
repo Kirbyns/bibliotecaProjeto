@@ -10,10 +10,12 @@ public class Funcionario extends Pessoa {
     private LocalDate dataDeAdmissao;
     private String email;
     private String senha;
-    // 0 = Admin | 1 = Funcionário com acesso ao sistema | 2 = Funcionário sem
-    // acesso ao sistema
+    // 0 = Admin | 1 = Funcionário com acesso limitado ao sistema | 2 = Funcionário
+    // com
+    // acesso limitado a si mesmo
     private int role;
 
+    // Construtor da classe
     public Funcionario(String cargo, double salario, LocalDate dataDeAdmissao, String nome, int idade, Long cpf,
             String email, String senha, int idFuncionario, int role) {
         super(nome, idade, cpf);
@@ -26,6 +28,7 @@ public class Funcionario extends Pessoa {
         this.role = role;
     }
 
+    // Getters e Setters
     public int getIdFuncionario() {
         return idFuncionario;
     }

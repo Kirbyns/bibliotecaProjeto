@@ -7,22 +7,24 @@ public class Usuario extends Pessoa {
     private final int matricula;
     private ArrayList<Emprestimo> historicoDeEmprestimo;
 
+    // Construtor da classe
     public Usuario(String nome, int idade, Long cpf, int matricula) {
         super(nome, idade, cpf);
         this.matricula = matricula;
         this.historicoDeEmprestimo = new ArrayList<Emprestimo>();
     }
 
-    // metodo de adicionar emprestimo ao historico do usuario
+    // Método para adicionar empréstimo ao histórico do Usuário
     public void adicionarEmprestimo(Emprestimo emprestimo) {
         historicoDeEmprestimo.add(emprestimo);
     }
 
-    // metodo para obter historio de emprestimos do usuario
+    // Getter para o historico de empréstimos
     public ArrayList<Emprestimo> getHistoricoDeEmprestimo() {
         return historicoDeEmprestimo;
     }
 
+    // Getter para a matricula
     public int getMatricula() {
         return matricula;
     }

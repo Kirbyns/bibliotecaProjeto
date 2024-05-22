@@ -1,17 +1,19 @@
 package models;
 
 public class Pessoa {
-    
+
     private String nome;
     private int idade;
     private Long cpf;
 
+    // Construtor da classe
     public Pessoa(String nome, int idade, Long cpf) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
     }
 
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -35,7 +37,5 @@ public class Pessoa {
     public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
-    
-    
-    
+
 }

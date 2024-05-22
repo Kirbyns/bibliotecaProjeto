@@ -11,7 +11,7 @@ public class Emprestimo {
     private Exemplar exemplar;
     private Usuario usuario;
 
-    // Construtor
+    // Construtor da classe
     public Emprestimo(int id, LocalDate dataRetirada, String status, Exemplar exemplar, Usuario usuario) {
         this.id = id;
         this.dataRetirada = dataRetirada;
