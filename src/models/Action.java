@@ -53,69 +53,110 @@ public abstract class Action {
             System.out.println("3 - CPF");
             System.out.println("4 - Email");
             System.out.println("5 - Senha");
-            int opcao_func = sc.nextInt();
-            switch (opcao_func) {
-                case 0:
-                    editing_func = false;
-                    break;
-                case 1:
-                    System.out.println("\nNome atual -> " + funcionario.getNome());
-                    System.out.println("Novo Nome:");
-                    sc.nextLine();
-                    String nome_func = sc.nextLine();
-                    funcionario.setNome(nome_func);
-                    System.out.println("\nFuncionário(a) editado com sucesso!");
-                    System.out.println("Novo nome: " + funcionario.getNome() + "\n");
-                    break;
-                case 2:
-                    System.out.println("\nIdade atual -> " + funcionario.getIdade());
-                    System.out.println("Nova idade:");
-                    sc.nextLine();
-                    int idade_func = sc.nextInt();
-                    funcionario.setIdade(idade_func);
-                    System.out.println("\nFuncionário(a) editado com sucesso!");
-                    System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
-                    break;
-                case 3:
-                    System.out
-                            .println("\nCPF atual -> "
-                                    + utilitarios.showCPFString(funcionario.getCpf()));
-                    System.out.println("Novo CPF:");
-                    String cpf_func = sc.next();
 
-                    if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
-                        System.out.println("CPF já cadastrado ou inválido!");
-                        break;
-                    }
+            try {
 
-                    if (utilitarios.maskaraCPF(cpf_func) == null) {
-                        System.out.println("CPF inválido!");
+                int opcao_func = sc.nextInt();
+                switch (opcao_func) {
+                    case 0:
+                        editing_func = false;
                         break;
-                    }
-                    funcionario.setCpf(utilitarios.maskaraCPF(cpf_func));
-                    System.out.println("\nFuncionário(a) editado com sucesso!");
-                    System.out.println(
-                            "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
-                    break;
-                case 4:
-                    System.out.println("\nEmail atual -> " + funcionario.getEmail());
-                    System.out.println("Novo Email:");
-                    String email_func = sc.next();
-                    funcionario.setEmail(email_func);
-                    System.out.println("\nFuncionário(a) editado com sucesso!");
-                    System.out.println("Novo email: " + funcionario.getEmail() + "\n");
-                    break;
-                case 5:
-                    System.out.println("\nSenha atual -> " + funcionario.getSenha());
-                    System.out.println("Nova Senha:");
-                    String senha_func = sc.next();
-                    funcionario.setSenha(senha_func);
-                    System.out.println("\nFuncionário(a) editado com sucesso!");
-                    System.out.println("Nova senha: " + funcionario.getSenha() + "\n");
-                    break;
-                default:
-                    System.out.println("\nResposta inválida!");
-                    break;
+                    // Edita o nome do funcionário
+                    case 1:
+                        try {
+                            System.out.println("\nNome atual -> " + funcionario.getNome());
+                            System.out.println("Novo Nome:");
+                            sc.nextLine();
+                            String nome_func = sc.nextLine();
+                            funcionario.setNome(nome_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo nome: " + funcionario.getNome() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Nome inválido!");
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita a idade do funcionário
+                    case 2:
+                        try {
+                            System.out.println("\nIdade atual -> " + funcionario.getIdade());
+                            System.out.println("Nova idade:");
+                            sc.nextLine();
+                            int idade_func = sc.nextInt();
+                            funcionario.setIdade(idade_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Idade inválida!");
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita o CPF do funcionário
+                    case 3:
+                        try {
+                            System.out
+                                    .println("\nCPF atual -> "
+                                            + utilitarios.showCPFString(funcionario.getCpf()));
+                            System.out.println("Novo CPF:");
+                            String cpf_func = sc.next();
+
+                            if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), biblioteca)) {
+                                System.out.println("CPF já cadastrado ou inválido!");
+                                break;
+                            }
+
+                            if (utilitarios.maskaraCPF(cpf_func) == null) {
+                                System.out.println("CPF inválido!");
+                                break;
+                            }
+                            funcionario.setCpf(utilitarios.maskaraCPF(cpf_func));
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println(
+                                    "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
+                        } catch (Exception e) {
+                            System.out.println("CPF inválido!");
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita o email do funcionário
+                    case 4:
+                        try {
+                            System.out.println("\nEmail atual -> " + funcionario.getEmail());
+                            System.out.println("Novo Email:");
+                            String email_func = sc.next();
+                            funcionario.setEmail(email_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo email: " + funcionario.getEmail() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Email inválido!");
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita a senha do funcionário
+                    case 5:
+                        try {
+                            System.out.println("\nSenha atual -> " + funcionario.getSenha());
+                            System.out.println("Nova Senha:");
+                            String senha_func = sc.next();
+                            funcionario.setSenha(senha_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Nova senha: " + funcionario.getSenha() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Senha inválida!");
+                            sc.nextLine();
+                        }
+                        break;
+                    default:
+                        System.out.println("\nResposta inválida!");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("\nResposta inválida!");
+                sc.nextLine();
             }
         }
     }
@@ -144,124 +185,144 @@ public abstract class Action {
             System.out.println("2 - CPF");
             System.out.println("3 - Adicionar empréstimo");
             System.out.println("4 - Devolver empréstimo");
-            int opcao_user = sc.nextInt();
+            try {
 
-            switch (opcao_user) {
-                case 0:
-                    editing_user = false;
-                    break;
-                case 1:
-                    try {
-                        System.out.println("\nNome atual -> " + usuario.getNome());
-                        System.out.println("Novo Nome:");
-                        sc.nextLine();
-                        String nome_func = sc.nextLine();
-                        usuario.setNome(nome_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Novo nome: " + usuario.getNome() + "\n");
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("Nome inválido!");
-                        break;
-                    }
-                case 2:
-                    try {
-                        System.out
-                                .println("\nCPF atual -> "
-                                        + utilitarios.showCPFString(usuario.getCpf()));
-                        System.out.println("Novo CPF:");
-                        String cpf_user = sc.next();
+                int opcao_user = sc.nextInt();
 
-                        if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
-                            System.out.println("CPF já cadastrado ou inválido!");
+                switch (opcao_user) {
+                    case 0:
+                        editing_user = false;
+                        break;
+
+                    // Edita o nome do usuario
+                    case 1:
+                        try {
+                            System.out.println("\nNome atual -> " + usuario.getNome());
+                            System.out.println("Novo Nome:");
+                            sc.nextLine();
+                            String nome_func = sc.nextLine();
+                            usuario.setNome(nome_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo nome: " + usuario.getNome() + "\n");
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Nome inválido!");
+                            sc.nextLine();
                             break;
                         }
 
-                        if (utilitarios.maskaraCPF(cpf_user) == null) {
+                        // Edita o CPF do usuario
+                    case 2:
+                        try {
+                            System.out
+                                    .println("\nCPF atual -> "
+                                            + utilitarios.showCPFString(usuario.getCpf()));
+                            System.out.println("Novo CPF:");
+                            String cpf_user = sc.next();
+
+                            if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_user), biblioteca)) {
+                                System.out.println("CPF já cadastrado ou inválido!");
+                                break;
+                            }
+
+                            if (utilitarios.maskaraCPF(cpf_user) == null) {
+                                System.out.println("CPF inválido!");
+                                break;
+                            }
+                            usuario.setCpf(utilitarios.maskaraCPF(cpf_user));
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println(
+                                    "Novo CPF: " + utilitarios.showCPFString(usuario.getCpf()) + "\n");
+                            break;
+                        } catch (Exception e) {
                             System.out.println("CPF inválido!");
-                            break;
-                        }
-                        usuario.setCpf(utilitarios.maskaraCPF(cpf_user));
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println(
-                                "Novo CPF: " + utilitarios.showCPFString(usuario.getCpf()) + "\n");
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("CPF inválido!");
-                        break;
-                    }
-                case 3:
-                    try {
-                        relatorio.gerarRelatorioLivrosNaoEmprestados(biblioteca.getExemplares(),
-                                biblioteca.getEmprestimos());
-
-                        System.out.println("\nInsira os dados do novo empréstimo:");
-                        System.out.println("Id do Exemplar:");
-                        int id_exemplar = sc.nextInt();
-                        LocalDate data_emprestimo = LocalDate.now();
-                        String status_emprestimo = "Emprestado";
-
-                        Exemplar exemplar_emprestando = utilitarios.findExemplarById(id_exemplar,
-                                biblioteca.getExemplares());
-
-                        if (exemplar_emprestando == null) {
-                            System.out.println("Exemplar inexistente!");
-                            break;
-                        }
-                        if (utilitarios.verificarEmprestimo(id_exemplar, biblioteca.getEmprestimos())) {
-                            System.out.println("Exemplar indisponível!");
+                            sc.nextLine();
                             break;
                         }
 
-                        Emprestimo new_emprestimo = new Emprestimo(utilitarios.generateIdEmprestimo(), data_emprestimo,
-                                status_emprestimo, exemplar_emprestando,
-                                usuario);
+                        // Adiciona empréstimo ao usuario
+                    case 3:
+                        try {
+                            relatorio.gerarRelatorioLivrosNaoEmprestados(biblioteca.getExemplares(),
+                                    biblioteca.getEmprestimos());
 
-                        biblioteca.adicionarEmprestimo(new_emprestimo);
-                        usuario.adicionarEmprestimo(new_emprestimo);
+                            System.out.println("\nInsira os dados do novo empréstimo:");
+                            System.out.println("Id do Exemplar:");
+                            int id_exemplar = sc.nextInt();
+                            LocalDate data_emprestimo = LocalDate.now();
+                            String status_emprestimo = "Emprestado";
 
-                        System.out.println("Empréstimo realizado com sucesso!");
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("Erro ao realizar o empréstimo!");
-                        System.out.println("Erro: " + e);
-                        break;
-                    }
-                case 4:
-                    try {
-                        relatorio.gerarRelatorioEmprestimosUsuario(usuario);
+                            Exemplar exemplar_emprestando = utilitarios.findExemplarById(id_exemplar,
+                                    biblioteca.getExemplares());
 
-                        if (usuario.getHistoricoDeEmprestimo().isEmpty()) {
-                            System.out.println();
+                            if (exemplar_emprestando == null) {
+                                System.out.println("Exemplar inexistente!");
+                                break;
+                            }
+                            if (utilitarios.verificarEmprestimo(id_exemplar, biblioteca.getEmprestimos())) {
+                                System.out.println("Exemplar indisponível!");
+                                break;
+                            }
+
+                            Emprestimo new_emprestimo = new Emprestimo(utilitarios.generateIdEmprestimo(),
+                                    data_emprestimo,
+                                    status_emprestimo, exemplar_emprestando,
+                                    usuario);
+
+                            biblioteca.adicionarEmprestimo(new_emprestimo);
+                            usuario.adicionarEmprestimo(new_emprestimo);
+
+                            System.out.println("Empréstimo realizado com sucesso!");
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Erro ao realizar o empréstimo!");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
-                        System.out.println("Insira o id do emprestimo que deseja devolver:");
-                        int idEmprestimo = sc.nextInt();
 
-                        Emprestimo emprestimo = utilitarios.findEmprestimoById(idEmprestimo,
-                                biblioteca.getEmprestimos());
+                        // Devolve empréstimo do usuario
+                    case 4:
+                        try {
+                            relatorio.gerarRelatorioEmprestimosUsuario(usuario);
 
-                        if (emprestimo == null) {
-                            System.out.println("Empréstimo inexistente");
+                            if (usuario.getHistoricoDeEmprestimo().isEmpty()) {
+                                System.out.println();
+                                break;
+                            }
+                            System.out.println("Insira o id do emprestimo que deseja devolver:");
+                            int idEmprestimo = sc.nextInt();
+
+                            Emprestimo emprestimo = utilitarios.findEmprestimoById(idEmprestimo,
+                                    biblioteca.getEmprestimos());
+
+                            if (emprestimo == null) {
+                                System.out.println("Empréstimo inexistente");
+                                break;
+                            }
+
+                            if (!usuario.getHistoricoDeEmprestimo().contains(emprestimo)) {
+                                System.out.println("Empréstimo inexistente");
+                                break;
+                            }
+
+                            biblioteca.devolverExemplar(emprestimo);
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Erro ao devolver o empréstimo!");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
-
-                        if (!usuario.getHistoricoDeEmprestimo().contains(emprestimo)) {
-                            System.out.println("Empréstimo inexistente");
-                            break;
-                        }
-
-                        biblioteca.devolverExemplar(emprestimo);
+                    default:
+                        System.out.println("\nResposta inválida!");
                         break;
-                    } catch (Exception e) {
-                        System.out.println("Erro ao devolver o empréstimo!");
-                        System.out.println("Erro: " + e);
-                        break;
-                    }
-                default:
-                    System.out.println("\nResposta inválida!");
-                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("\nResposta inválida!");
+                sc.nextLine();
             }
+
         }
     }
 }
