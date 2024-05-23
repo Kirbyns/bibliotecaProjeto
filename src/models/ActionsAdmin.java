@@ -295,7 +295,7 @@ public class ActionsAdmin extends Action {
                             System.out.println("\nInsira os dados do novo empréstimo:");
                             System.out.println("Id do Exemplar:");
                             int id_exemplar = sc.nextInt();
-                            System.out.println("Id do Usário:");
+                            System.out.println("Id do Usuário:");
                             int id_user = sc.nextInt();
                             LocalDate data_emprestimo = LocalDate.now();
                             String status_emprestimo = "Emprestado";
@@ -306,7 +306,7 @@ public class ActionsAdmin extends Action {
                                     biblioteca.getExemplares());
 
                             if (user_emprestando == null) {
-                                System.out.println("Usário inexistente!");
+                                System.out.println("Usuário inexistente!");
                                 break;
                             }
                             if (exemplar_emprestando == null) {
@@ -335,10 +335,10 @@ public class ActionsAdmin extends Action {
                             break;
                         }
 
-                        // Cria um novo usário
+                        // Cria um novo usuário
                     case 3:
                         try {
-                            System.out.println("\nInsira os dados do novo usário:");
+                            System.out.println("\nInsira os dados do novo usuário:");
                             System.out.println("Nome:");
                             sc.nextLine();
                             String nome_user = sc.nextLine();
@@ -356,10 +356,10 @@ public class ActionsAdmin extends Action {
                                     utilitarios.generateIdUsuario());
 
                             biblioteca.adicionarUsuario(new_usuario);
-                            System.out.println("\nUsário(a) " + new_usuario.getNome() + " adicionado com sucesso!");
+                            System.out.println("\nUsuário(a) " + new_usuario.getNome() + " adicionado com sucesso!");
                             break;
                         } catch (Exception e) {
-                            System.out.println("Erro ao adicionar o usário!");
+                            System.out.println("Erro ao adicionar o usuário!");
                             System.out.println("Erro: " + e);
                             sc.nextLine();
                             break;
@@ -496,15 +496,15 @@ public class ActionsAdmin extends Action {
                             break;
                         }
 
-                        // Edita os dados de um usário específico
+                        // Edita os dados de um usuário específico
                     case 12:
                         try {
                             relatorio.listarUsuarios(biblioteca);
-                            System.out.println("Qual o id do(a) usário(a) que deseja editar?");
+                            System.out.println("Qual o id do(a) usuário(a) que deseja editar?");
                             int id_user = sc.nextInt();
                             Usuario usuario = utilitarios.findUsuarioById(id_user, biblioteca.getUsuarios());
                             if (usuario == null) {
-                                System.out.println("Usário inexistente");
+                                System.out.println("Usuário inexistente");
                                 break;
                             }
 
@@ -512,7 +512,7 @@ public class ActionsAdmin extends Action {
                             editing_user(usuario, sc, biblioteca, relatorio);
                             break;
                         } catch (Exception e) {
-                            System.out.println("Erro ao editar o usário!");
+                            System.out.println("Erro ao editar o usuário!");
                             System.out.println("Erro: " + e);
                             sc.nextLine();
                             break;
