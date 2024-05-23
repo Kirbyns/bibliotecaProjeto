@@ -79,67 +79,77 @@ public class Main {
                         System.out.println("\nO que deseja fazer?");
                         System.out.println("0. Encerrar");
                         System.out.println("1. Entrar");
-                        int open_response = sc.nextInt();
-                        if (open_response == 0) {
-                                // Encerrando o programa
-                                open = false;
-                                break;
-                        } else if (open_response == 1) {
+                        try {
 
-                                // Verificando Login
-                                System.out.println("Insira seu e-mail:");
-                                String email = sc.next();
-                                System.out.println("Insira sua senha:");
-                                String senha = sc.next();
+                                int open_response = sc.nextInt();
+                                if (open_response == 0) {
+                                        // Encerrando o programa
+                                        open = false;
+                                        break;
+                                } else if (open_response == 1) {
 
-                                while (!utilitarios.verificarLogin(email, senha, biblioteca)) {
-                                        System.out.println("Email ou senha inválidos. Tente novamente.");
+                                        // Verificando Login
                                         System.out.println("Insira seu e-mail:");
-                                        email = sc.next();
+                                        String email = sc.next();
                                         System.out.println("Insira sua senha:");
-                                        senha = sc.next();
+                                        String senha = sc.next();
+
+                                        while (!utilitarios.verificarLogin(email, senha, biblioteca)) {
+                                                System.out.println("Email ou senha inválidos. Tente novamente.");
+                                                System.out.println("Insira seu e-mail:");
+                                                email = sc.next();
+                                                System.out.println("Insira sua senha:");
+                                                senha = sc.next();
+                                        }
+
+                                        int role = utilitarios.getCargoFuncionario(email, senha, biblioteca);
+
+                                        System.out.println("\nSeja bem-vindo!");
+
+                                        // Iniciando o menu
+                                        switch (role) {
+                                                // Admin com acesso a todo o sistema
+                                                case 0:
+                                                        ActionsAdmin aa = new ActionsAdmin(sc, biblioteca, relatorio,
+                                                                        utilitarios);
+                                                        aa.menu();
+                                                        break;
+
+                                                // Funcionário com acesso limitado ao sistema
+                                                case 1:
+                                                        Funcionario funcionario = utilitarios.findFuncionarioByLogin(
+                                                                        email,
+                                                                        senha,
+                                                                        biblioteca.getFuncionarios());
+                                                        ActionsFuncComAcesso afca = new ActionsFuncComAcesso(
+                                                                        funcionario, sc,
+                                                                        biblioteca, relatorio,
+                                                                        utilitarios);
+                                                        afca.menu();
+                                                        break;
+
+                                                // Funcionário com acesso somente a suas informações básicas
+                                                case 2:
+                                                        Funcionario funcionarioSemAcesso = utilitarios
+                                                                        .findFuncionarioByLogin(
+                                                                                        email, senha,
+                                                                                        biblioteca.getFuncionarios());
+                                                        ActionsFuncSemAcesso actionsFuncSemAcesso = new ActionsFuncSemAcesso(
+                                                                        funcionarioSemAcesso, sc,
+                                                                        biblioteca, relatorio, utilitarios);
+                                                        actionsFuncSemAcesso.menu();
+                                                        break;
+                                                default:
+                                                        System.out.println("\nVocê não tem acesso a este sistema!");
+                                                        break;
+                                        }
+                                } else {
+                                        System.out.println("Resposta inválida!");
                                 }
-
-                                int role = utilitarios.getCargoFuncionario(email, senha, biblioteca);
-
-                                System.out.println("\nSeja bem-vindo!");
-
-                                // Iniciando o menu
-                                switch (role) {
-                                        // Admin com acesso a todo o sistema
-                                        case 0:
-                                                ActionsAdmin aa = new ActionsAdmin(sc, biblioteca, relatorio,
-                                                                utilitarios);
-                                                aa.menu();
-                                                break;
-
-                                        // Funcionário com acesso limitado ao sistema
-                                        case 1:
-                                                Funcionario funcionario = utilitarios.findFuncionarioByLogin(email,
-                                                                senha,
-                                                                biblioteca.getFuncionarios());
-                                                ActionsFuncComAcesso afca = new ActionsFuncComAcesso(funcionario, sc,
-                                                                biblioteca, relatorio,
-                                                                utilitarios);
-                                                afca.menu();
-                                                break;
-
-                                        // Funcionário com acesso somente a suas informações básicas
-                                        case 2:
-                                                Funcionario funcionarioSemAcesso = utilitarios.findFuncionarioByLogin(
-                                                                email, senha,
-                                                                biblioteca.getFuncionarios());
-                                                ActionsFuncSemAcesso actionsFuncSemAcesso = new ActionsFuncSemAcesso(
-                                                                funcionarioSemAcesso, sc,
-                                                                biblioteca, relatorio, utilitarios);
-                                                actionsFuncSemAcesso.menu();
-                                                break;
-                                        default:
-                                                System.out.println("\nVocê não tem acesso a este sistema!");
-                                                break;
-                                }
-                        } else {
+                        } catch (Exception e) {
                                 System.out.println("Resposta inválida!");
+                                System.out.println("Erro: " + e);
+                                sc.nextLine();
                         }
                 }
                 System.out.println("\nAté mais!");

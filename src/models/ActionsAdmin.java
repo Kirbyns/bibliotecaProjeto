@@ -46,155 +46,171 @@ public class ActionsAdmin extends Action {
             System.out.println("6 - Email");
             System.out.println("7 - Senha");
             System.out.println("8 - Role");
-            int opcao_func = sc.nextInt();
 
-            switch (opcao_func) {
-                // Retorna para a tela anterior
-                case 0:
-                    editing_func = false;
-                    break;
+            try {
 
-                // Edita o nome do funcionário
-                case 1:
-                    try {
-                        System.out.println("\nNome atual -> " + funcionario.getNome());
-                        System.out.println("Novo Nome:");
-                        sc.nextLine();
-                        String nome_func = sc.nextLine();
-                        funcionario.setNome(nome_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Novo nome: " + funcionario.getNome() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o nome do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
+                int opcao_func = sc.nextInt();
 
-                // Edita a idade do funcionário
-                case 2:
-                    try {
-                        System.out.println("\nIdade atual -> " + funcionario.getIdade());
-                        System.out.println("Nova idade:");
-                        sc.nextLine();
-                        int idade_func = sc.nextInt();
-                        funcionario.setIdade(idade_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar a idade do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
+                switch (opcao_func) {
+                    // Retorna para a tela anterior
+                    case 0:
+                        editing_func = false;
+                        break;
 
-                // Edita o cargo do funcionário
-                case 3:
-                    try {
-                        System.out.println("\nCargo atual -> " + funcionario.getCargo());
-                        System.out.println("Novo Cargo:");
-                        sc.nextLine();
-                        String cargo_func = sc.nextLine();
-                        funcionario.setCargo(cargo_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Novo cargo: " + funcionario.getCargo() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o cargo do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
-
-                // Edita o salário do funcionário
-                case 4:
-                    try {
-                        System.out.println("\nSalário atual -> " + funcionario.getSalario());
-                        System.out.println("Novo Salário:");
-                        double salario_func = sc.nextDouble();
-                        funcionario.setSalario(salario_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Novo salário: " + funcionario.getSalario() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o salário do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
-
-                // Edita o CPF do funcionário
-                case 5:
-                    try {
-                        System.out
-                                .println("\nCPF atual -> "
-                                        + utilitarios.showCPFString(funcionario.getCpf()));
-                        System.out.println("Novo CPF:");
-                        String cpf_func = sc.next();
-
-                        // Verificando se o CPF está no tamanho correto e se existe no sistema
-                        if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
-                            System.out.println("CPF já cadastrado ou inválido!");
-                            break;
+                    // Edita o nome do funcionário
+                    case 1:
+                        try {
+                            System.out.println("\nNome atual -> " + funcionario.getNome());
+                            System.out.println("Novo Nome:");
+                            sc.nextLine();
+                            String nome_func = sc.nextLine();
+                            funcionario.setNome(nome_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo nome: " + funcionario.getNome() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o nome do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
                         }
+                        break;
 
-                        // Realiza a mascara do CPF, transformando ele em Long
-                        if (utilitarios.maskaraCPF(cpf_func) == null) {
-                            System.out.println("CPF inválido!");
-                            break;
+                    // Edita a idade do funcionário
+                    case 2:
+                        try {
+                            System.out.println("\nIdade atual -> " + funcionario.getIdade());
+                            System.out.println("Nova idade:");
+                            sc.nextLine();
+                            int idade_func = sc.nextInt();
+                            funcionario.setIdade(idade_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Nova idade: " + funcionario.getIdade() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar a idade do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
                         }
-                        funcionario.setCpf(utilitarios.maskaraCPF(cpf_func));
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println(
-                                "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o CPF do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
+                        break;
 
-                // Edita o email do funcionário
-                case 6:
-                    try {
-                        System.out.println("\nEmail atual -> " + funcionario.getEmail());
-                        System.out.println("Novo Email:");
-                        String email_func = sc.next();
-                        funcionario.setEmail(email_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Novo email: " + funcionario.getEmail() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar o email do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
+                    // Edita o cargo do funcionário
+                    case 3:
+                        try {
+                            System.out.println("\nCargo atual -> " + funcionario.getCargo());
+                            System.out.println("Novo Cargo:");
+                            sc.nextLine();
+                            String cargo_func = sc.nextLine();
+                            funcionario.setCargo(cargo_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo cargo: " + funcionario.getCargo() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o cargo do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                        break;
 
-                // Edita a senha do funcionário
-                case 7:
-                    try {
-                        System.out.println("\nSenha atual -> " + funcionario.getSenha());
-                        System.out.println("Nova Senha:");
-                        String senha_func = sc.next();
-                        funcionario.setSenha(senha_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Nova senha: " + funcionario.getSenha() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar a senha do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                    break;
+                    // Edita o salário do funcionário
+                    case 4:
+                        try {
+                            System.out.println("\nSalário atual -> " + funcionario.getSalario());
+                            System.out.println("Novo Salário:");
+                            double salario_func = sc.nextDouble();
+                            funcionario.setSalario(salario_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo salário: " + funcionario.getSalario() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o salário do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                        break;
 
-                case 8:
-                    try {
-                        System.out.println("\nRole atual -> " + funcionario.getRole());
-                        System.out.println(
-                                "0 - Admin com acesso ilimitado | 1 - Funcionário c/ acesso limitado | 2 - Funcionário c/ acesso a si mesmo");
-                        System.out.println("Nova Role:");
-                        int acesso_func = sc.nextInt();
+                    // Edita o CPF do funcionário
+                    case 5:
+                        try {
+                            System.out
+                                    .println("\nCPF atual -> "
+                                            + utilitarios.showCPFString(funcionario.getCpf()));
+                            System.out.println("Novo CPF:");
+                            String cpf_func = sc.next();
 
-                        funcionario.setRole(acesso_func);
-                        System.out.println("\nFuncionário(a) editado com sucesso!");
-                        System.out.println("Nova role: " + funcionario.getRole() + "\n");
-                    } catch (Exception e) {
-                        System.out.println("Erro ao editar a role do funcionário(a)");
-                        System.out.println("Erro: " + e);
-                    }
-                default:
-                    System.out.println("\nResposta inválida!");
-                    break;
+                            // Verificando se o CPF está no tamanho correto e se existe no sistema
+                            if (!utilitarios.verficarCPF(utilitarios.maskaraCPF(cpf_func), this.biblioteca)) {
+                                System.out.println("CPF já cadastrado ou inválido!");
+                                break;
+                            }
+
+                            // Realiza a mascara do CPF, transformando ele em Long
+                            if (utilitarios.maskaraCPF(cpf_func) == null) {
+                                System.out.println("CPF inválido!");
+                                break;
+                            }
+                            funcionario.setCpf(utilitarios.maskaraCPF(cpf_func));
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println(
+                                    "Novo CPF: " + utilitarios.showCPFString(funcionario.getCpf()) + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o CPF do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita o email do funcionário
+                    case 6:
+                        try {
+                            System.out.println("\nEmail atual -> " + funcionario.getEmail());
+                            System.out.println("Novo Email:");
+                            String email_func = sc.next();
+                            funcionario.setEmail(email_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Novo email: " + funcionario.getEmail() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar o email do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                        break;
+
+                    // Edita a senha do funcionário
+                    case 7:
+                        try {
+                            System.out.println("\nSenha atual -> " + funcionario.getSenha());
+                            System.out.println("Nova Senha:");
+                            String senha_func = sc.next();
+                            funcionario.setSenha(senha_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Nova senha: " + funcionario.getSenha() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar a senha do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                        break;
+
+                    case 8:
+                        try {
+                            System.out.println("\nRole atual -> " + funcionario.getRole());
+                            System.out.println(
+                                    "0 - Admin com acesso ilimitado | 1 - Funcionário c/ acesso limitado | 2 - Funcionário c/ acesso a si mesmo");
+                            System.out.println("Nova Role:");
+                            int acesso_func = sc.nextInt();
+
+                            funcionario.setRole(acesso_func);
+                            System.out.println("\nFuncionário(a) editado com sucesso!");
+                            System.out.println("Nova role: " + funcionario.getRole() + "\n");
+                        } catch (Exception e) {
+                            System.out.println("Erro ao editar a role do funcionário(a)");
+                            System.out.println("Erro: " + e);
+                            sc.nextLine();
+                        }
+                    default:
+                        System.out.println("\nResposta inválida!");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Resposta inválida!");
+                System.out.println("Erro: " + e);
+                sc.nextLine();
             }
         }
     }
@@ -265,6 +281,7 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao adicionar exemplar");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -314,6 +331,7 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao realizar o empréstimo!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -343,6 +361,7 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao adicionar o usário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -378,6 +397,11 @@ public class ActionsAdmin extends Action {
                                     "0 - Admin com acesso ilimitado | 1 - Funcionário c/ acesso limitado | 2 - Funcionário c/ acesso a si mesmo");
                             int acesso_func = sc.nextInt();
 
+                            if (!(acesso_func == 0 || acesso_func == 1 || acesso_func == 2)) {
+                                System.out.println("Opção inválida!");
+                                break;
+                            }
+
                             Funcionario new_funcionario = new Funcionario(cargo, salario, dataAdmissao, nome_func,
                                     idade_func,
                                     utilitarios.maskaraCPF(cpf_func),
@@ -391,6 +415,7 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao adicionar o funcionário!");
                             System.out.println(e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -414,6 +439,7 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao devolver o empréstimo!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -466,10 +492,11 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao editar o funcionário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
+                            break;
                         }
-                        break;
 
-                    // Edita os dados de um usário específico
+                        // Edita os dados de um usário específico
                     case 12:
                         try {
                             relatorio.listarUsuarios(biblioteca);
@@ -487,8 +514,9 @@ public class ActionsAdmin extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao editar o usário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
+                            break;
                         }
-                        break;
                     default:
                         System.out.println("\nResposta inválida!");
                         break;
