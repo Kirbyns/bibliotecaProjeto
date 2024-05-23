@@ -53,6 +53,8 @@ public class ActionsFuncSemAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao editar o funcionário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
+                            break;
                         }
                     default:
                         System.out.println("\nResposta inválida!");

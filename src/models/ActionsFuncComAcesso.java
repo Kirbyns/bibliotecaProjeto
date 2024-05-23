@@ -80,6 +80,7 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao adicionar exemplar");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -129,6 +130,7 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao realizar o empréstimo!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -158,6 +160,7 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao adicionar o usário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -181,6 +184,7 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao devolver o empréstimo!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
                             break;
                         }
 
@@ -221,6 +225,8 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao editar o funcionário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
+                            break;
                         }
 
                         // Tela dos Usuários da biblioteca
@@ -241,8 +247,9 @@ public class ActionsFuncComAcesso extends Action {
                         } catch (Exception e) {
                             System.out.println("Erro ao editar o usário!");
                             System.out.println("Erro: " + e);
+                            sc.nextLine();
+                            break;
                         }
-                        break;
                     default:
                         System.out.println("\nResposta inválida!");
                         break;
