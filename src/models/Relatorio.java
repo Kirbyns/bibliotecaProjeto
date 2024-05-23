@@ -92,6 +92,11 @@ public class Relatorio {
             return;
         }
 
+        if (livrosEmprestadosIds.size() == exemplares.size()) {
+            System.out.println("Todos os livros estão emprestados");
+            return;
+        }
+
         System.out.println("\nTodos os livros disponíveis:");
         for (Exemplar exemplar : exemplares) {
             if (!livrosEmprestadosIds.contains(exemplar.getId())) {
